@@ -10,9 +10,9 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://www.projet3.nekbot.com/
  */
-$title = htmlspecialchars($post['title']); ?>
+$title = htmlspecialchars($post['title']);
 
-<?php ob_start(); ?>
+ob_start(); ?>
 <h1>Mon super blog !</h1>
 <p><a href="index.php">Retour à la liste des billets</a></p>
 
@@ -53,6 +53,7 @@ id=<?php echo $post['id'] ?>" method="post">
     </div>
 </form>
 
-<?php $content = ob_get_clean();
+<?php 
+$content = ob_get_clean();
 
 require 'template.php';

@@ -10,9 +10,9 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://www.projet3.nekbot.com/
  */
-$title = 'Mon blog'; ?>
+$title = 'Mon blog';
 
-<?php ob_start(); ?>
+ob_start(); ?>
 <h1>Mon super blog !</h1>
 <p>Derniers billets du blog :</p>
 
@@ -35,8 +35,8 @@ while ($data = $posts->fetch()) {
     </div>
 <?php
 }
-$posts->closeCursor();
-?>
-<?php $content = ob_get_clean(); ?>
 
-<?php require 'template.php'; ?>
+$posts->closeCursor();
+$content = ob_get_clean();
+
+require 'template.php'; ?>
