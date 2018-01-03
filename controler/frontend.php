@@ -1,12 +1,15 @@
 <?php
-
-require('model/frontend.php');
+/**
+ * @file
+ * Controler file
+ */
+require 'model/frontend.php';
 
 function listPosts()
 {
     $posts = getPosts();
 
-    require('view/frontend/listPostsView.php');
+    include 'view/frontend/listPostsView.php';
 }
 
 function post()
@@ -14,7 +17,7 @@ function post()
     $post = getPost($_GET['id']);
     $comments = getComments($_GET['id']);
 
-    require('view/frontend/postView.php');
+    include 'view/frontend/postView.php';
 }
 
 function addComment($postId, $author, $comment)
@@ -23,8 +26,7 @@ function addComment($postId, $author, $comment)
 
     if ($affectedLines === false) {
         die('Impossible d\'ajouter le commentaire !');
-    }
-    else{
+    } else {
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
