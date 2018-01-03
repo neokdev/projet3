@@ -25,13 +25,15 @@ $title = htmlspecialchars($post['title']); ?>
 <?php
 while ($comment = $comments->fetch()) {
 ?>
-    <p><strong><?php echo htmlspecialchars($comment['author']) ?></strong> le <?php echo $comment['comment_date_fr'] ?></p>
+    <p><strong><?php echo htmlspecialchars($comment['author']) ?></strong>
+     le <?php echo $comment['comment_date_fr'] ?></p>
     <p><?php echo nl2br(htmlspecialchars($comment['comment'])) ?></p>
 <?php
 }
 ?>
 
-<form action="index.php?action=addComment&amp;id=<?php echo $post['id'] ?>" method="post">
+<form action="index.php?action=addComment&amp;
+id=<?php echo $post['id'] ?>" method="post">
     <div>
         <label for="author">Auteur</label><br />
         <input type="text" id="author" name="author" />
