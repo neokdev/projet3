@@ -2,16 +2,13 @@
 /**
  * Frontend Model file
  * 
- * PHP version 7.1
+ * PHP version 7.1.9
  * 
  * @category Model
- * @package  PackageName
+ * @package  Projet3
  * @author   Neok <neokdev@gmail.com>
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://www.projet3.nekbot.com/
- * 
- * @file
- * Model file
  */
 /**
  * Posts query
@@ -104,7 +101,7 @@ function dbConnect()
  * @param string $author  Comment Author
  * @param string $comment Comment
  * 
- * @return $post
+ * @return $affectedLines
  */
 function postComment($postId, $author, $comment)
 {
