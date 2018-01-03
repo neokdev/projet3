@@ -27,6 +27,8 @@ ob_start(); ?>
     </p>
 </div>
 
+<div class="container">
+
 <h2>Commentaires</h2>
 
 <?php
@@ -38,22 +40,25 @@ while ($comment = $comments->fetch()) {
 <?php
 }
 ?>
-
-<form action="index.php?action=addComment&amp;
-id=<?php echo $post['id'] ?>" method="post">
-    <div>
-        <label for="author">Auteur</label><br />
-        <input type="text" id="author" name="author" />
-    </div>
-        <label for="comment">Commentaire</label><br />
-        <textarea id="comment" name="comment"></textarea>
-    </div>
-    <div>
-        <input type="submit" />
-    </div>
-</form>
+    <form action="index.php?action=addComment&amp;
+    id=<?php echo $post['id'] ?>" method="post">
+        <div class="form-group">
+            <label for="author">Auteur</label><br />
+            <input type="text" class="form-control" id="author" name="author" />
+        </div>
+        <div class="form-group">
+            <label for="comment">Commentaire</label><br />
+            <textarea class="form-control" rows="5" 
+            id="comment" name="comment"></textarea>
+        </div>
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+            Soumettre la requête</button>
+        </div>
+    </form>
+</div>
 
 <?php 
 $content = ob_get_clean();
 
-require 'template.php';
+require 'template.php'; ?>

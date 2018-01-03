@@ -12,4 +12,18 @@
  */
 $title = 'Erreur';
 
-ob_start();
+ob_start(); ?>
+
+<h1>Mon super blog !</h1>
+<p><a href="../index.php">Retour à l'accueil</a></p>
+
+<div class="container">
+    <div class="alert alert-danger text-center" role="alert">
+        <strong>Erreur !</strong> Erreur lors de la récupération des données de la base. Veuillez vérifier les paramètres. 
+    </div>
+</div>
+
+<?php
+$content = ob_get_clean();
+
+require 'frontend/template.php';?>
