@@ -19,7 +19,7 @@ ob_start(); ?>
 
 <div class="container">
     <div class="alert alert-danger text-center" role="alert">
-        <strong>Erreur !</strong> Erreur lors de la récupération des données de la base. Veuillez vérifier les paramètres. 
+        <strong>Erreur !</strong> Erreur lors de la transmission des données.  
     </div>
 </div>
 
