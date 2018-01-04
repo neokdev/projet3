@@ -1,7 +1,6 @@
 <?php
 /**
  * Error View
- * 
  * PHP version 7.1.9
  * 
  * @category View

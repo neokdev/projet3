@@ -5,7 +5,6 @@
         <title><?php
         /**
          * Template
-         * 
          * PHP version 7.1.9
          * 
          * @category View
