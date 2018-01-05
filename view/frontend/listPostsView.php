@@ -19,19 +19,22 @@ ob_start(); ?>
 <?php
 while ($data = $posts->fetch()) {
 ?>
-    <div class="news">
-        <h3>
+<div class="news card">
+    <div class="card-header">
+        <h5>
             <?php echo htmlspecialchars($data['title']) ?>
             <em>le <?php echo $data['creation_date_fr'] ?></em>
-        </h3>
-        
-        <p>
+        </h5>
+    </div>
+    <div class="card-body">    
+        <p class="card-text">
             <?php echo nl2br(htmlspecialchars($data['content'])) ?>
             <br />
-            <em><a href="index.php?action=post&amp;id=<?php echo $data['id'] ?>
+            <em><a class="card-link" href="index.php?action=post&amp;id=<?php echo $data['id'] ?>
             ">Commentaires</a></em>
         </p>
     </div>
+</div>
 <?php
 }
 
