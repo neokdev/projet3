@@ -18,7 +18,7 @@ ob_start(); ?>
 
 <div class="container">
     <div class="alert alert-danger text-center" role="alert">
-        <strong>Erreur !</strong> Erreur lors de la transmission des données.  
+        <strong>Erreur !</strong> <?php echo $errorMessage ?>
     </div>
 </div>
 
