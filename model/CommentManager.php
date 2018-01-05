@@ -9,6 +9,8 @@
  * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
  * @link     http://www.projet3.nekbot.com/
  */
+namespace Neok\projet3\model;
+
 require_once 'model/Manager.php';
 /**
  * CommentManager_Class
@@ -30,7 +32,7 @@ class CommentManager extends Manager
      */
     public function getComments($postId)
     {
-        $db = $this->_dbConnect();
+        $db = $this->dbConnect();
         $comments = $db->prepare(
             'SELECT id, author, comment, 
             DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') 
@@ -65,22 +67,5 @@ class CommentManager extends Manager
         $affectectedLines = $comments->execute(array($postId, $author, $comment));
 
         return $affectectedLines;
-    }
-    /**
-     * Database connection
-     * 
-     * @return PDO 
-     */
-    private function _dbConnect()
-    {
-        $db = new PDO(
-            'mysql:host=localhost;
-            dbname=test;
-            charset=utf8',
-            'root',
-            'root'
-        );
-
-        return $db;
     }
 }

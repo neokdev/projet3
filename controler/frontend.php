@@ -18,7 +18,7 @@ require_once 'model/CommentManager.php';
  */
 function listPosts()
 {
-    $postManager = new PostManager();
+    $postManager = new \Neok\projet3\model\PostManager();
     $posts = $postManager->getPosts();
 
     include 'view/frontend/listPostsView.php';
@@ -30,8 +30,8 @@ function listPosts()
  */
 function post()
 {
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
+    $postManager = new \Neok\projet3\model\PostManager();
+    $commentManager = new \Neok\projet3\model\CommentManager();
     
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
@@ -49,7 +49,7 @@ function post()
  */
 function addComment($postId, $author, $comment)
 {
-    $commentManager = new CommentManager();
+    $commentManager = new \Neok\projet3\model\CommentManager();
 
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 

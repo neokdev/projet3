@@ -10,6 +10,7 @@
  * @link     http://www.projet3.nekbot.com/
  */
 namespace Neok\Projet3\Model;
+
 require_once 'model/Manager.php';
 /**
  * PostManager_Class
@@ -29,7 +30,7 @@ class PostManager extends Manager
      */
     public function getPosts()
     {
-        $db = $this->_dbConnect();
+        $db = $this->dbConnect();
         $req = $db->query(
             'SELECT id, title, content, 
             DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') 
@@ -50,7 +51,7 @@ class PostManager extends Manager
      */
     public function getPost($postId)
     {
-        $db = $this->_dbConnect();
+        $db = $this->dbConnect();
         $req = $db->prepare(
             'SELECT id, title, content, 
             DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') 
@@ -62,22 +63,5 @@ class PostManager extends Manager
         $post = $req->fetch();
 
         return $post;
-    }
-    /**
-     * Database connection
-     * 
-     * @return PDO 
-     */
-    private function _dbConnect()
-    {
-        $db = new PDO(
-            'mysql:host=localhost;
-            dbname=test;
-            charset=utf8',
-            'root',
-            'root'
-        );
-
-        return $db;
     }
 }
