@@ -60,7 +60,7 @@ class CommentManager extends Manager
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
-            'INSERT INTO comments(post_id, author, comment, comment_date
+            'INSERT INTO comments(post_id, author, comment, comment_date)
             VALUES(?, ?, ?, NOW())'
         );
 

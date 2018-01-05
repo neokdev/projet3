@@ -16,10 +16,8 @@ ob_start(); ?>
 <h1>Mon super blog !</h1>
 <p><a href="../index.php">Retour à l'accueil</a></p>
 
-<div class="container">
-    <div class="alert alert-danger text-center" role="alert">
-        <strong>Erreur !</strong> <?php echo $errorMessage ?>
-    </div>
+<div class="alert alert-danger text-center" role="alert">
+    <strong>Erreur !</strong> <?php echo $errorMessage ?>
 </div>
 
 <?php
