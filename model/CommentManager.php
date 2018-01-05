@@ -6,8 +6,8 @@
  * @category Model
  * @package  Projet3
  * @author   Neok <neokdev@gmail.com>
- * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link     http://www.projet3.nekbot.com/
+ * @license  http://www.php.net/license/3_01.txt PHP License 3.01
+ * @see      http://www.projet3.nekbot.com/
  */
 namespace Neok\projet3\model;
 
@@ -18,8 +18,8 @@ require_once 'model/Manager.php';
  * @category Class
  * @package  Projet3
  * @author   Neok <neokdev@gmail.com>
- * @license  http://www.php.net/license/3_01.txt  PHP License 3.01
- * @link     http://www.projet3.nekbot.com/
+ * @license  http://www.php.net/license/3_01.txt PHP License 3.01
+ * @see      http://www.projet3.nekbot.com/
  */
 class CommentManager extends Manager
 {
@@ -58,7 +58,7 @@ class CommentManager extends Manager
      */
     public function postComment($postId, $author, $comment)
     {
-        $db = $this->_dbConnect();
+        $db = $this->dbConnect();
         $comments = $db->prepare(
             'INSERT INTO comments(post_id, author, comment, comment_date
             VALUES(?, ?, ?, NOW())'
