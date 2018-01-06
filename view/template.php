@@ -14,15 +14,27 @@
          * @see      http://www.projet3.nekbot.com/
          */
         echo $title ?></title>
+        <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+        <script> tinymce.init({
+            selector: '#mce'
+        }); </script>
         <link rel="stylesheet" 
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" 
         integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" 
         crossorigin="anonymous">
-
         <link href="public/css/style.css" rel="stylesheet" /> 
     </head>
         
     <body>
+        <nav class="navbar navbar-expand navbar-dark bg-secondary fixed-top">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.php?p=admin">Se connecter</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
         <div class="container">
             <?php echo $content ?>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 
