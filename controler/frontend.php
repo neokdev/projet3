@@ -9,6 +9,9 @@
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
+use Neok\projet3\model\PostManager;
+use Neok\projet3\model\CommentManager;
+
 require_once 'model/PostManager.php';
 require_once 'model/CommentManager.php';
 /**
@@ -18,7 +21,7 @@ require_once 'model/CommentManager.php';
  */
 function listPosts()
 {
-    $postManager = new \Neok\projet3\model\PostManager();
+    $postManager = new PostManager();
     $posts = $postManager->getPosts();
 
     include 'view/frontend/listPostsView.php';
@@ -30,8 +33,8 @@ function listPosts()
  */
 function post()
 {
-    $postManager = new \Neok\projet3\model\PostManager();
-    $commentManager = new \Neok\projet3\model\CommentManager();
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
     
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
@@ -49,7 +52,7 @@ function post()
  */
 function addComment($postId, $author, $comment)
 {
-    $commentManager = new \Neok\projet3\model\CommentManager();
+    $commentManager = new CommentManager();
 
     $affectedLines = $commentManager->postComment($postId, $author, $comment);
 

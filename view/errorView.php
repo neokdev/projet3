@@ -13,7 +13,7 @@ $title = 'Erreur';
 
 ob_start(); ?>
 
-<h1>Mon super blog !</h1>
+<h1>Billet simple pour l'Alaska</h1>
 <p><a href="../index.php">Retour à l'accueil</a></p>
 
 <div class="alert alert-danger text-center" role="alert">
@@ -23,4 +23,5 @@ ob_start(); ?>
 <?php
 $content = ob_get_clean();
 
+require 'view/nav.php';
 require 'frontend/template.php';?>

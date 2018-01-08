@@ -12,7 +12,7 @@
 $title = 'Mon blog';
 
 ob_start(); ?>
-<h1>Mon super blog !</h1>
+<h1>Billet simple pour l'Alaska</h1>
 <p>Derniers billets du blog :</p>
 
 
@@ -41,4 +41,5 @@ while ($data = $posts->fetch()) {
 $posts->closeCursor();
 $content = ob_get_clean();
 
+require 'view/nav.php';
 require 'view/template.php'; ?>

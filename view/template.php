@@ -26,15 +26,7 @@
     </head>
         
     <body>
-        <nav class="navbar navbar-expand navbar-dark bg-secondary fixed-top">
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav">
-                    <li class="nav-item">
-                        <a class="nav-link" href="index.php?p=admin">Se connecter</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+        <?php echo $nav ?>
         <div class="container">
             <?php echo $content ?>
             <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" 

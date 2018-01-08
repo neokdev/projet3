@@ -12,6 +12,8 @@
 require 'controler/frontend.php';
 require 'controler/backend.php';
 
+use Neok\projet3\model;
+
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
@@ -32,7 +34,13 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } 
+        }
+    } elseif (isset($_GET['p'])) {
+        if ($_GET['p'] == 'login') {
+            include 'view/backend/login.php';
+        } else {
+            listPosts();
+        }
     } else {
         listPosts();
     }
@@ -40,12 +48,4 @@ try {
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
     include 'view/errorView.php';
-}
-if (isset($_GET['p'])) {
-    $p = $_GET['p'];
-} else {
-    $p = 'home';
-}
-if ($p === 'admin') {
-    viewAdmin();
 }

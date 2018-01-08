@@ -12,8 +12,8 @@
 $title = htmlspecialchars($post['title']);
 
 ob_start(); ?>
-<h1>Mon super blog !</h1>
-<p><a href="index.php">Retour à la liste des billets</a></p>
+<h1>Billet simple pour l'Alaska</h1>
+<p><a href="index.php?p=home">Retour à la liste des billets</a></p>
 
 <div class="news card">
     <div class="card-header">
@@ -68,4 +68,5 @@ id=<?php echo $post['id'] ?>" method="post">
 <?php 
 $content = ob_get_clean();
 
+require 'view/nav.php';
 require 'view/template.php'; ?>
