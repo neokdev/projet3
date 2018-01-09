@@ -37,5 +37,5 @@ ob_start();?>
 <?php 
 $content = ob_get_clean();
 
-require 'view/nav.php';
-require 'view/template.php'; ?>
+require '../nav.php';
+require '../template.php'; ?>

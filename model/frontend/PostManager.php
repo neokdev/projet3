@@ -11,7 +11,7 @@
  */
 namespace Neok\Projet3\Model;
 
-require_once 'model/Manager.php';
+require_once '../model/Manager.php';
 /**
  * PostManager_Class
  * 

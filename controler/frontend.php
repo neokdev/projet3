@@ -12,8 +12,8 @@
 use Neok\projet3\model\PostManager;
 use Neok\projet3\model\CommentManager;
 
-require_once 'model/frontend/PostManager.php';
-require_once 'model/frontend/CommentManager.php';
+require_once '../model/frontend/PostManager.php';
+require_once '../model/frontend/CommentManager.php';
 /**
  * Post comment
  * 
@@ -24,7 +24,7 @@ function listPosts()
     $postManager = new PostManager();
     $posts = $postManager->getPosts();
 
-    include 'view/frontend/listPostsView.php';
+    include '../view/frontend/listPostsView.php';
 }
 /**
  * Get post list
@@ -39,7 +39,7 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
-    include 'view/frontend/postView.php';
+    include '../view/frontend/postView.php';
 }
 /**
  * Add Comment
