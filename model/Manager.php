@@ -30,7 +30,7 @@ class Manager
     {
         $db = new \PDO(
             'mysql:host=localhost;
-            dbname=test;
+            dbname=projet3;
             charset=utf8',
             'root',
             'root'

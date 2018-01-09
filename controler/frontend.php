@@ -12,8 +12,8 @@
 use Neok\projet3\model\PostManager;
 use Neok\projet3\model\CommentManager;
 
-require_once 'model/PostManager.php';
-require_once 'model/CommentManager.php';
+require_once 'model/frontend/PostManager.php';
+require_once 'model/frontend/CommentManager.php';
 /**
  * Post comment
  * 

@@ -1,14 +1,14 @@
 <?php
 
-$title = 'Login';
+$title = 'Connexion';
 
 ob_start();?>
 <h1>Connexion</h1>
-<p><a href="index.php">Retour à la liste des billets</a></p>
+<p><a href="index.php?p=home">Retour à la liste des billets</a></p>
 
 <div class="jumbotron">
 <h4>Connexion</h4><br/>
-<form method="POST">
+<form action="model/backend/login.php" method="POST">
     <div class="form-group">
         <label for="validationDefaultUsername">Nom d'utilisateur</label>
         <input type="text" name="username" class="form-control" id="validationDefaultUsername" placeholder="Nom d'utilisateur" required>
@@ -31,7 +31,7 @@ ob_start();?>
         <label class="custom-control-label" for="customCheck1">Se souvenir de moi</label>
     </div>
 
-        <button class="btn btn-secondary" type="submit">Confirmer</button>
+        <button type="submit" name="submit" class="btn btn-secondary">Confirmer</button>
 </form>
 </div>
 <?php 

@@ -51,53 +51,5 @@
             "phpcs",
             "standards"
         ]
-    },
-    {
-        "name": "tinymce/tinymce",
-        "version": "4.7.4",
-        "version_normalized": "4.7.4.0",
-        "source": {
-            "type": "git",
-            "url": "https://github.com/tinymce/tinymce-dist.git",
-            "reference": "780cdf87273d5778feb2382f3954a5b9a0705eaa"
-        },
-        "dist": {
-            "type": "zip",
-            "url": "https://api.github.com/repos/tinymce/tinymce-dist/zipball/780cdf87273d5778feb2382f3954a5b9a0705eaa",
-            "reference": "780cdf87273d5778feb2382f3954a5b9a0705eaa",
-            "shasum": ""
-        },
-        "time": "2017-12-05T15:17:22+00:00",
-        "type": "component",
-        "extra": {
-            "component": {
-                "scripts": [
-                    "tinymce.js",
-                    "plugins/*/plugin.js",
-                    "themes/*/theme.js"
-                ],
-                "files": [
-                    "tinymce.min.js",
-                    "plugins/*/plugin.min.js",
-                    "themes/*/theme.min.js",
-                    "skins/**"
-                ]
-            }
-        },
-        "installation-source": "dist",
-        "notification-url": "https://packagist.org/downloads/",
-        "license": [
-            "LGPL-2.1"
-        ],
-        "description": "Web based JavaScript HTML WYSIWYG editor control.",
-        "homepage": "http://www.tinymce.com",
-        "keywords": [
-            "editor",
-            "html",
-            "javascript",
-            "richtext",
-            "tinymce",
-            "wysiwyg"
-        ]
     }
 ]

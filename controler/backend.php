@@ -1,12 +1,13 @@
 <?php
+
 use Neok\projet3\model\AdminManager;
-require_once 'model/AdminManager.php';
-function submitLogin() 
+
+require_once 'model/backend/AdminManager.php';
+
+function login($username, $email, $password, $remember) 
 {
     $adminManager = new AdminManager();
-    $username = $adminManager->getUserInfo($_POST['username']);
-}
-function login()
-{
+    $info = $adminManager->getUserInfo($username, $email, $password, $remember);
+
     include 'view/backend/login.php';
 }

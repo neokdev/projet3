@@ -9,7 +9,7 @@
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-$title = 'Mon blog';
+$title = 'Billet simple pour l\'Alaska';
 
 ob_start(); ?>
 <h1>Billet simple pour l'Alaska</h1>
