@@ -1,5 +1,7 @@
 <?php
 
+
+
 $title = 'Connexion';
 
 ob_start();?>
@@ -35,7 +37,4 @@ ob_start();?>
 </form>
 </div>
 <?php 
-$content = ob_get_clean();
-
-require '../nav.php';
-require '../template.php'; ?>
+$content = ob_get_clean();?>

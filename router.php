@@ -37,7 +37,7 @@ try {
         }
     } elseif (isset($_GET['p'])) {
         if ($_GET['p'] == 'login') {
-            include 'view/backend/login.php';
+            login();
         } else {
             listPosts();
         }
@@ -47,5 +47,5 @@ try {
 }
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
-    include 'view/errorView.php';
+    include 'views/errorView.php';
 }

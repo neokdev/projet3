@@ -68,5 +68,5 @@ id=<?php echo $post['id'] ?>" method="post">
 <?php 
 $content = ob_get_clean();
 
-require '../view/nav.php';
-require '../view/template.php'; ?>
+require '../views/nav.php';
+require '../views/template.php'; ?>

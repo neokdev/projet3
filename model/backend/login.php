@@ -24,7 +24,7 @@ try {
 
 catch(\Exception $e) {
     $errorMessage = $e->getMessage();
-    include 'view/errorView.php';
+    include 'views/errorView.php';
 }
 
 echo "user : " . $username . "    ";

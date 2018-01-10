@@ -41,5 +41,5 @@ while ($data = $posts->fetch()) {
 $posts->closeCursor();
 $content = ob_get_clean();
 
-require '../view/nav.php';
-require '../view/template.php'; ?>
+require '../views/nav.php';
+require '../views/template.php'; ?>

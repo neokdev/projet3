@@ -24,7 +24,7 @@ function listPosts()
     $postManager = new PostManager();
     $posts = $postManager->getPosts();
 
-    include '../view/frontend/listPostsView.php';
+    include '../views/frontend/listPostsView.php';
 }
 /**
  * Get post list
@@ -39,7 +39,7 @@ function post()
     $post = $postManager->getPost($_GET['id']);
     $comments = $commentManager->getComments($_GET['id']);
 
-    include '../view/frontend/postView.php';
+    include '../views/frontend/postView.php';
 }
 /**
  * Add Comment
