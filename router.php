@@ -9,10 +9,13 @@
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-require 'controler/frontend/frontend.php';
-require 'controler/backend/backend.php';
+require 'controler/frontend/post.php';
+require 'controler/frontend/comment.php';
+require 'controler/backend/users.php';
 
-use Neok\projet3\model;
+use Neok\Projet3\Controler;
+use Neok\Projet3\Controler\UsersControler;
+use Neok\Projet3\Model;
 
 try {
     if (isset($_GET['action'])) {
@@ -37,7 +40,7 @@ try {
         }
     } elseif (isset($_GET['p'])) {
         if ($_GET['p'] == 'login') {
-            login();
+            return (new UsersControler())->login();
         } else {
             listPosts();
         }

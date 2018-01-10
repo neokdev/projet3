@@ -23,10 +23,22 @@ class ComposerStaticInit65ae54e101203fc43f175e49953ae7bb
         array (
             'Projet3\\' => 8,
         ),
+        'M' => 
+        array (
+            'Model\\' => 6,
+        ),
         'D' => 
         array (
             'Doctrine\\Instantiator\\' => 22,
             'DeepCopy\\' => 9,
+        ),
+        'C' => 
+        array (
+            'Controler\\' => 10,
+        ),
+        'A' => 
+        array (
+            'App\\' => 4,
         ),
     );
 
@@ -45,6 +57,10 @@ class ComposerStaticInit65ae54e101203fc43f175e49953ae7bb
         array (
             0 => __DIR__ . '/../..' . '/src/Projet3',
         ),
+        'Model\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/model',
+        ),
         'Doctrine\\Instantiator\\' => 
         array (
             0 => __DIR__ . '/..' . '/doctrine/instantiator/src/Doctrine/Instantiator',
@@ -52,6 +68,14 @@ class ComposerStaticInit65ae54e101203fc43f175e49953ae7bb
         'DeepCopy\\' => 
         array (
             0 => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy',
+        ),
+        'Controler\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/controler',
+        ),
+        'App\\' => 
+        array (
+            0 => __DIR__ . '/../..' . '/src',
         ),
     );
 

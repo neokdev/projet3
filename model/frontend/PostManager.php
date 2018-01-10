@@ -11,7 +11,7 @@
  */
 namespace Neok\Projet3\Model;
 
-require_once '../model/Manager.php';
+require_once '../src/Projet3/DatabaseManager.php';
 /**
  * PostManager_Class
  * 
@@ -21,7 +21,7 @@ require_once '../model/Manager.php';
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-class PostManager extends Manager
+class PostManager extends DatabaseManager
 {
     /**
      * Posts query

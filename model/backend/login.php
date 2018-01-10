@@ -1,5 +1,5 @@
 <?php
-namespace Neok\projet3\model;
+namespace Neok\Projet3\Model;
 
 try {
     if (isset($_POST['submit'])) {
