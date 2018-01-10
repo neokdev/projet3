@@ -14,14 +14,11 @@ $title = 'Erreur';
 ob_start(); ?>
 
 <h1>Billet simple pour l'Alaska</h1>
-<p><a href="../index.php?p=home">Retour à l'accueil</a></p>
+<p><a href="index.php?p=home">Retour à l'accueil</a></p>
 
 <div class="alert alert-danger text-center" role="alert">
     <strong>Erreur !</strong> <?php echo $errorMessage ?>
 </div>
 
 <?php
-$content = ob_get_clean();
-
-require 'view/nav.php';
-require 'view/template.php';?>
+$content = ob_get_clean();?>

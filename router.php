@@ -9,8 +9,8 @@
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-require 'controler/frontend.php';
-require 'controler/backend.php';
+require 'controler/frontend/frontend.php';
+require 'controler/backend/backend.php';
 
 use Neok\projet3\model;
 
@@ -48,4 +48,6 @@ try {
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
     include 'views/errorView.php';
+    include 'views/nav.php';
+    include 'views/template.php';
 }

@@ -7,17 +7,8 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'phpDocumentor\\Reflection\\' => array($vendorDir . '/phpdocumentor/reflection-common/src', $vendorDir . '/phpdocumentor/reflection-docblock/src', $vendorDir . '/phpdocumentor/type-resolver/src'),
-    'Zend\\Stdlib\\' => array($vendorDir . '/zendframework/zend-stdlib/src'),
-    'Zend\\Expressive\\Router\\' => array($vendorDir . '/zendframework/zend-expressive-fastroute/src', $vendorDir . '/zendframework/zend-expressive-router/src'),
     'Webmozart\\Assert\\' => array($vendorDir . '/webmozart/assert/src'),
-    'Webimpress\\ComposerExtraDependency\\' => array($vendorDir . '/webimpress/composer-extra-dependency/src'),
-    'Psr\\Http\\Message\\' => array($vendorDir . '/psr/http-message/src'),
-    'Psr\\Container\\' => array($vendorDir . '/psr/container/src'),
-    'Interop\\Http\\Server\\' => array($vendorDir . '/http-interop/http-middleware/src'),
-    'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
-    'Framework\\' => array($baseDir . '/src/Framework'),
-    'Fig\\Http\\Message\\' => array($vendorDir . '/fig/http-message-util/src'),
-    'FastRoute\\' => array($vendorDir . '/nikic/fast-route/src'),
+    'Projet3\\' => array($baseDir . '/src/Projet3'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
 );
