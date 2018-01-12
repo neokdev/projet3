@@ -9,9 +9,8 @@
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-namespace Neok\Projet3\Model;
 
-require_once '../src/Projet3/DatabaseManager.php';
+require_once '../src/Projet3/Database/Database.php';
 /**
  * PostManager_Class
  * 
@@ -21,7 +20,7 @@ require_once '../src/Projet3/DatabaseManager.php';
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-class PostManager extends DatabaseManager
+class PostManager extends Database
 {
     /**
      * Posts query

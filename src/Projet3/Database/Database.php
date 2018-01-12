@@ -9,7 +9,6 @@
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-namespace Neok\Projet3\Model;
 /**
  * Manager_Class
  * 
@@ -19,7 +18,7 @@ namespace Neok\Projet3\Model;
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-class DatabaseManager
+class Database
 {
     /**
      * Database connection
@@ -28,7 +27,7 @@ class DatabaseManager
      */
     protected function dbConnect()
     {
-        $db = new \PDO(
+        $db = new PDO(
             'mysql:host=localhost;
             dbname=projet3;
             charset=utf8',
@@ -36,6 +35,9 @@ class DatabaseManager
             'root'
         );
 
+        $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
         return $db;
     }
+    
 }

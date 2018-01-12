@@ -12,6 +12,6 @@ return array(
     'Model\\' => array($baseDir . '/model'),
     'Doctrine\\Instantiator\\' => array($vendorDir . '/doctrine/instantiator/src/Doctrine/Instantiator'),
     'DeepCopy\\' => array($vendorDir . '/myclabs/deep-copy/src/DeepCopy'),
+    'Database\\' => array($baseDir . '/src/Projet3/Database'),
     'Controler\\' => array($baseDir . '/controler'),
-    'App\\' => array($baseDir . '/src'),
 );

@@ -13,10 +13,6 @@ require 'controler/frontend/post.php';
 require 'controler/frontend/comment.php';
 require 'controler/backend/users.php';
 
-use Neok\Projet3\Controler;
-use Neok\Projet3\Controler\UsersControler;
-use Neok\Projet3\Model;
-
 try {
     if (isset($_GET['action'])) {
         if ($_GET['action'] == 'listPosts') {
@@ -40,7 +36,7 @@ try {
         }
     } elseif (isset($_GET['p'])) {
         if ($_GET['p'] == 'login') {
-            return (new UsersControler())->login();
+            getUserInfo();
         } else {
             listPosts();
         }

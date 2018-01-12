@@ -15,12 +15,12 @@
     "autoload": {
         "psr-4": {
             "Projet3\\": "src/Projet3",
-            "App\\": "src",
+            "Database\\": "src/Projet3/Database",
             "Controler\\": "controler",
             "Model\\": "model"
-
         }
     },
     "require": {
+        "php": ">=7.1.0"
     }
 }

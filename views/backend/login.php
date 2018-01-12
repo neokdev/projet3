@@ -1,7 +1,5 @@
 <?php
 
-
-
 $title = 'Connexion';
 
 ob_start();?>
@@ -10,7 +8,7 @@ ob_start();?>
 
 <div class="jumbotron">
 <h4>Connexion</h4><br/>
-<form action="model/backend/login.php" method="POST">
+<form action="../controler/backend/login.php" method="POST">
     <div class="form-group">
         <label for="validationDefaultUsername">Nom d'utilisateur</label>
         <input type="text" name="username" class="form-control" id="validationDefaultUsername" placeholder="Nom d'utilisateur" required>

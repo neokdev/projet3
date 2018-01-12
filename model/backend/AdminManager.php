@@ -1,18 +1,18 @@
 <?php
+require_once '../src/Projet3/Database/Database.php';
 
-namespace Neok\Projet3\Model;
-
-require_once '../src/Projet3/DatabaseManager.php';
-
-class AdminManager extends DatabaseManager
+class AdminManager extends Database
 {
-    public function getUserInfo($username, $email, $password, $remember)
+    public function auth($email)
     {
         $db = $this->dbConnect();
-        $req = $db->prepare(
-            'SELECT *
+        $res = $db->query(
+            "SELECT *
             FROM users
-            WHERE email = ?'
+            WHERE email = '$email'"
         );
+        $user = $res->fetchAll(\PDO::FETCH_OBJ);
+        
+        return $user;
     }
 }
