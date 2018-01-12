@@ -1,49 +1,35 @@
 <?php
 
-require_once '../../model/backend/AdminManager.php';
+require_once '../model/backend/AdminManager.php';
+require_once '../controler/backend/Session.php';
 
-try{
-    if (isset($_POST['submit'])) {
-        if (isset($_POST['username'])) {
-            $username = $_POST['username'];
-        } 
-        if (isset($_POST['email'])) {
-            $email = $_POST['email'];
-        } 
-        if (isset($_POST['password'])) {
-            $passwordEntered = sha1($_POST['password']);
-        } 
-        if (isset($_POST['remember'])) {
-            $remember = "true";
-        } else {
-            $remember = "false";
-        } 
+function submitLogin($email, $password)
+{
+    if (isset($_POST['password'])) {
+        $password = $_POST['password'];;
+    } 
+    if (isset($_POST['remember'])) {
+        $remember = "true";
     } else {
-        throw new \Exception("Erreur de saisie");
+        $remember = "false";
+    } 
+     
+    $adminmanager = new AdminManager;
+    $user = $adminmanager->auth($email);
+    $passworddb = $user[0]->password;
+    $userid = $user[0]->id;
+    $emaildb = $user[0]->email;
+    $date = $user[0]->creation_date;
+    if (password_verify($password, $passworddb)) {
+        $session = Session::GetInstance();
+        $session->startSession();
+        $session->auth = true;
+        $session->id = $userid;
+        $session->email = $email;
+        $session->date = $date;
+        listPosts();
+    } else {
+        die('Pas connecté');
+        
     }
 }
-catch(Exception $e) {
-    $errorMessage = $e->getMessage();
-    include 'views/errorView.php';
-    include 'views/nav.php';
-    include 'views/template.php';
-}
-
-$adminmanager = new AdminManager;
-$user = $adminmanager->auth($email);
-$password = $user[0]->password;
-if ($passwordEntered === $password) {
-    $_SESSION['auth'] = $user[0]->id;
-    dir('Connecté');
-} else {
-    die('Pas connecté');
-}
-
-
-
-
-echo "user : " . $username . "    ";
-echo "email : " . $email . "    ";
-echo "password : " . $password . "    ";
-echo "password entered : " . $passwordEntered . "    ";
-echo "remember : " . $remember . "    ";

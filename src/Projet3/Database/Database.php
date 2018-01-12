@@ -27,7 +27,7 @@ class Database
      */
     protected function dbConnect()
     {
-        $db = new PDO(
+        $db = new \PDO(
             'mysql:host=localhost;
             dbname=projet3;
             charset=utf8',

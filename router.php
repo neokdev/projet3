@@ -33,10 +33,24 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        }
+        } elseif ($_GET['action'] == 'logout') {
+            include 'controler/backend/logout.php';
+            logout();
+        } else {
+            throw new Exception('Impossible de se déconnecter');
+        } 
     } elseif (isset($_GET['p'])) {
         if ($_GET['p'] == 'login') {
-            getUserInfo();
+            if (isset($_POST['submit'])) {
+                if (!empty($_POST['email']) && !empty($_POST['password'])) {
+                    include 'controler/backend/login.php';
+                    submitLogin($_POST['email'], $_POST['password']);
+                } else {
+                    throw new Exception('Tous les champs ne sont pas remplis !');
+                }
+            } else {
+                (new User)->getAuth();
+            }
         } else {
             listPosts();
         }
@@ -46,7 +60,7 @@ try {
 }
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
-    include 'views/errorView.php';
-    include 'views/nav.php';
-    include 'views/template.php';
+    include '../views/errorView.php';
+    include '../views/nav.php';
+    include '../views/template.php';
 }

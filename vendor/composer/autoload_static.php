@@ -87,7 +87,6 @@ class ComposerStaticInit65ae54e101203fc43f175e49953ae7bb
     );
 
     public static $classMap = array (
-        'Database\\Database' => __DIR__ . '/../..' . '/src/Projet3/Database/Database.php',
         'DeepCopy\\DeepCopy' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/DeepCopy.php',
         'DeepCopy\\Exception\\CloneException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/CloneException.php',
         'DeepCopy\\Exception\\PropertyException' => __DIR__ . '/..' . '/myclabs/deep-copy/src/DeepCopy/Exception/PropertyException.php',
@@ -119,9 +118,6 @@ class ComposerStaticInit65ae54e101203fc43f175e49953ae7bb
         'File_Iterator' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Iterator.php',
         'File_Iterator_Facade' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Facade.php',
         'File_Iterator_Factory' => __DIR__ . '/..' . '/phpunit/php-file-iterator/src/Factory.php',
-        'Model\\AdminManager' => __DIR__ . '/../..' . '/model/backend/AdminManager.php',
-        'Model\\CommentManager' => __DIR__ . '/../..' . '/model/frontend/CommentManager.php',
-        'Model\\PostManager' => __DIR__ . '/../..' . '/model/frontend/PostManager.php',
         'PHPUnit\\Exception' => __DIR__ . '/..' . '/phpunit/phpunit/src/Exception.php',
         'PHPUnit\\Framework\\Assert' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/Assert.php',
         'PHPUnit\\Framework\\AssertionFailedError' => __DIR__ . '/..' . '/phpunit/phpunit/src/Framework/AssertionFailedError.php',

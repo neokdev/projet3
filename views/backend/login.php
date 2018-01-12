@@ -8,11 +8,7 @@ ob_start();?>
 
 <div class="jumbotron">
 <h4>Connexion</h4><br/>
-<form action="../controler/backend/login.php" method="POST">
-    <div class="form-group">
-        <label for="validationDefaultUsername">Nom d'utilisateur</label>
-        <input type="text" name="username" class="form-control" id="validationDefaultUsername" placeholder="Nom d'utilisateur" required>
-    </div>
+<form action="index.php?p=login" method="POST">
     <div class="form-group">
     <label for="validationDefaultEmail">Adresse e-mail</label>
         <div class="input-group">
