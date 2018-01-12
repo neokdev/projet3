@@ -16,20 +16,25 @@ function submitLogin($email, $password)
      
     $adminmanager = new AdminManager;
     $user = $adminmanager->auth($email);
-    $passworddb = $user[0]->password;
-    $userid = $user[0]->id;
-    $emaildb = $user[0]->email;
-    $date = $user[0]->creation_date;
-    if (password_verify($password, $passworddb)) {
-        $session = Session::GetInstance();
-        $session->startSession();
-        $session->auth = true;
-        $session->id = $userid;
-        $session->email = $email;
-        $session->date = $date;
-        listPosts();
+    var_dump($user);
+    if (!empty($user)) {
+        $passworddb = $user[0]->password;
+        $userid = $user[0]->id;
+        $emaildb = $user[0]->email;
+        $date = $user[0]->creation_date;
+        if (password_verify($password, $passworddb)) {
+            $session = Session::GetInstance();
+            $session->startSession();
+            $session->auth = true;
+            $session->id = $userid;
+            $session->email = $email;
+            $session->date = $date;
+            listPosts();
+        } else {
+            die('Pas connecté');
+        }
     } else {
-        die('Pas connecté');
-        
-    }
+        header('Location: index.php?p=login&err=nomail');
+    }   
+    
 }

@@ -45,19 +45,18 @@ try {
                 if (!empty($_POST['email']) && !empty($_POST['password'])) {
                     include 'controler/backend/login.php';
                     submitLogin($_POST['email'], $_POST['password']);
-                } else {
-                    throw new Exception('Tous les champs ne sont pas remplis !');
-                }
+                } 
+            } elseif (isset($_GET['err'])) {
+                header("HTTP/1.0 404 Not Found");
             } else {
                 (new User)->getAuth();
             }
         } else {
             listPosts();
         }
-    } else {
-        listPosts();
-    }
-}
+    } 
+} 
+
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
     include '../views/errorView.php';

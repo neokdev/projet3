@@ -37,14 +37,13 @@ class Session
     /**
     *    (Re)starts the session.
     *    
-    *    @return bool    TRUE if the session has been initialized, else FALSE.
+    *    @return bool   true if the session has been initialized, else FALSE.
     **/
     public function startSession()
     {
         if ($this->_sessionState == self::SESSION_NOT_STARTED) {
             $this->_sessionState = session_start();
         }
-        
         return $this->_sessionState;
     }
     
@@ -53,7 +52,7 @@ class Session
     *    Example: $instance->foo = 'bar';
     *    
     *    @param name    Name of the datas.
-    *    @param value    Your datas.
+    *    @param value   Your datas.
     *    @return void
     **/
     public function __set($name , $value)
@@ -66,9 +65,9 @@ class Session
     *    Example: echo $instance->foo;
     *    
     *    @param name    Name of the datas to get.
-    *    @return mixed    Datas stored in session.
+    *    @return mixed  Datas stored in session.
     **/
-    public function __get( $name )
+    public function __get($name)
     {
         if (isset($_SESSION[$name])) {
             return $_SESSION[$name];
@@ -76,13 +75,13 @@ class Session
     }
     
     
-    public function __isset( $name )
+    public function __isset($name)
     {
         return isset($_SESSION[$name]);
     }
     
     
-    public function __unset( $name )
+    public function __unset($name)
     {
         unset($_SESSION[$name]);
     }
