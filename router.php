@@ -47,14 +47,16 @@ try {
                     submitLogin($_POST['email'], $_POST['password']);
                 } 
             } elseif (isset($_GET['err'])) {
-                header("HTTP/1.0 404 Not Found");
+                (new User)->getAuth();
             } else {
                 (new User)->getAuth();
             }
         } else {
             listPosts();
         }
-    } 
+    } else {
+        listPosts();
+    }
 } 
 
 catch(Exception $e) {

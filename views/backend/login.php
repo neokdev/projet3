@@ -8,6 +8,9 @@ ob_start();?>
 
 <div class="jumbotron">
 <h4>Connexion</h4><br/>
+<?php if (isset($errorMessage)) {
+    echo $errorMessage;
+} ?>
 <form action="index.php?p=login" method="POST">
     <div class="form-group">
     <label for="validationDefaultEmail">Adresse e-mail</label>

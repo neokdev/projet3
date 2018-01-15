@@ -16,7 +16,6 @@ function submitLogin($email, $password)
      
     $adminmanager = new AdminManager;
     $user = $adminmanager->auth($email);
-    var_dump($user);
     if (!empty($user)) {
         $passworddb = $user[0]->password;
         $userid = $user[0]->id;
@@ -31,7 +30,7 @@ function submitLogin($email, $password)
             $session->date = $date;
             listPosts();
         } else {
-            die('Pas connecté');
+            header('Location: index.php?p=login&err=wrongpass');
         }
     } else {
         header('Location: index.php?p=login&err=nomail');
