@@ -34,10 +34,26 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
+        } elseif ($_GET['action'] == 'addPost') {
+            if (!empty($_POST['title']) && !empty($_POST['postContent'])) {
+                addPost($_POST['title'], $_POST['postContent']);
+            } else {
+                throw new Exception('Tous les champs ne sont pas remplis !');
+            }
+        } elseif ($_GET['action'] == 'editpostform') {
+            admin();
         } elseif ($_GET['action'] == 'logout') {
             include 'controler/backend/logout.php';
             logout();
-        } else {
+        } elseif ($_GET['action'] == 'deletepost') {
+            if (isset($_GET['id']) && $_GET['id'] > 0) {
+                deletePost($_GET['id']);
+            } else {
+                throw new Exception('Erreur de suppréssion de billet.');
+            }
+        } elseif ($_GET['action'] == 'editpost') {
+            
+        } {
             throw new Exception('Impossible de se déconnecter');
         } 
     } elseif (isset($_GET['p'])) {
@@ -53,7 +69,13 @@ try {
                 (new User)->getAuth();
             }
         } elseif ($_GET['p'] == 'admin') {
-            admin();
+            if (isset($_GET['addpost'])) {
+                admin();
+            } elseif (isset($_GET['deletepost'])) {
+                admin();
+            } else {
+                admin();
+            }
         } else {
             listPosts();
         }

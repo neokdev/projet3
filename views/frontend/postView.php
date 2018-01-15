@@ -56,8 +56,8 @@ id=<?php echo $post['id'] ?>" method="post">
     </div>
     <div class="form-group">
         <label for="comment">Commentaire</label><br />
-        <textarea class="form-control" rows="5" 
-        id="comment" name="comment"></textarea>
+        <input class="form-control" rows="5" 
+        id="comment" name="comment"></input>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-secondary">

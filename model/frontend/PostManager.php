@@ -36,7 +36,7 @@ class PostManager extends Database
             AS creation_date_fr
             FROM posts
             ORDER BY creation_date 
-            DESC LIMIT 0, 5'
+            DESC'
         );
 
         return $req;
@@ -62,5 +62,42 @@ class PostManager extends Database
         $post = $req->fetch();
 
         return $post;
+    }
+    /**
+     * Add post
+     * 
+     * @param string $title Titre du post
+     * @param string $postContent Contenu du post
+     * 
+     * @return $post
+     */
+    public function addPost(string $title, string $postContent )
+    {
+        $db = $this->dbConnect();
+        $post = $db->prepare(
+            'INSERT INTO posts(title, content, creation_date)
+            VALUES(?, ?, NOW())'
+        );
+        $addedpost = $post->execute(array($title, $postContent));
+
+        return $addedpost;
+    }
+    /**
+     * Delete post
+     * 
+     * @param string $title Titre du post
+     * 
+     * @return $post
+     */
+    public function deletePost(int $id)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare(
+            "DELETE FROM posts
+            WHERE id = '$id'"
+        );
+        $deletedpost = $req->execute(array($id));
+
+        return $deletedpost;
     }
 }

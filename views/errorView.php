@@ -21,4 +21,6 @@ ob_start(); ?>
 </div>
 
 <?php
+var_dump($_POST['title']);
+var_dump($_POST['postContent']);
 $content = ob_get_clean();?>
