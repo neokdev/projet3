@@ -12,6 +12,7 @@
 require 'controler/frontend/post.php';
 require 'controler/frontend/comment.php';
 require 'controler/backend/users.php';
+require 'controler/backend/admin.php';
 
 try {
     if (isset($_GET['action'])) {
@@ -51,6 +52,8 @@ try {
             } else {
                 (new User)->getAuth();
             }
+        } elseif ($_GET['p'] == 'admin') {
+            admin();
         } else {
             listPosts();
         }

@@ -26,9 +26,9 @@ while ($data = $posts->fetch()) {
             <em>le <?php echo $data['creation_date_fr'] ?></em>
         </h5>
     </div>
-    <div class="card-body">    
+    <div class="card-body">
         <p class="card-text">
-            <?php echo nl2br(htmlspecialchars($data['content'])) ?>
+            <?php echo $data['content'] ?>
             <br />
             <em><a class="card-link" href="index.php?action=post&amp;id=<?php echo $data['id'] ?>
             ">Commentaires</a></em>

@@ -11,10 +11,11 @@ if ($session->auth) {
                     <a class="nav-link" href="index.php?action=logout">Se déconnecter</a>
                 </li>
                 <li class="nav-item">
-                    <span class="navbar-text"><?php echo " - Connecté depuis l'adresse : " . $session->email; ?></span>
+                    <span class="navbar-text"><?php echo "Connecté depuis l'adresse : " . $session->email; ?></span>
                 </li>
-                
-                
+                <li class="nav-item">
+                    <a class="nav-link" href="index.php?p=admin">Acceder à l'interface d'administration</a>
+                </li>
             </ul>
         </div>
     </nav>

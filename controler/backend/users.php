@@ -1,7 +1,5 @@
 <?php
 
-require_once '../model/backend/AdminManager.php';
-
 class User 
 {
     public function getAuth()

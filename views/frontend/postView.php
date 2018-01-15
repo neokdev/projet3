@@ -24,7 +24,7 @@ ob_start(); ?>
     </div>
     <div class="card-body">
         <p>
-            <?php echo nl2br(htmlspecialchars($post['content'])) ?>
+            <?php echo $post['content'] ?>
         </p>
     </div>
 </div>
@@ -60,7 +60,7 @@ id=<?php echo $post['id'] ?>" method="post">
         id="comment" name="comment"></textarea>
     </div>
     <div class="form-group">
-        <button type="submit" class="btn btn-primary">
+        <button type="submit" class="btn btn-secondary">
         Soumettre la requête</button>
     </div>
 </form>
