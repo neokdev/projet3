@@ -46,7 +46,7 @@ class PostManager extends Database
      * 
      * @param int $postId Post_Id
      * 
-     * @return $post
+     * @return bool $post
      */
     public function getPost($postId)
     {
@@ -69,7 +69,7 @@ class PostManager extends Database
      * @param string $title Titre du post
      * @param string $postContent Contenu du post
      * 
-     * @return $post
+     * @return bool $addedpost
      */
     public function addPost(string $title, string $postContent )
     {
@@ -85,9 +85,9 @@ class PostManager extends Database
     /**
      * Delete post
      * 
-     * @param string $title Titre du post
+     * @param int $id Id du post
      * 
-     * @return $post
+     * @return bool $deletedpost
      */
     public function deletePost(int $id)
     {
@@ -99,5 +99,26 @@ class PostManager extends Database
         $deletedpost = $req->execute(array($id));
 
         return $deletedpost;
+    }
+    /**
+     * Edit post
+     * 
+     * @param int $id Id du post
+     * @param string $title Titre du post
+     * @param string $content Contenu du post
+     * 
+     * @return bool $post
+     */
+    public function editPost(int $id, string $title, string $postContent)
+    {
+        $db = $this->dbConnect();
+        $req = $db->prepare(
+            'UPDATE posts
+            SET title = "$title", content = "$postContent"
+            WHERE id = "$id"'
+        );
+        $editedpost = $req->execute(array($id, $title, $postContent));
+
+        return $editedpost;
     }
 }

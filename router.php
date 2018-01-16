@@ -41,7 +41,11 @@ try {
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
         } elseif ($_GET['action'] == 'editpostform') {
-            admin();
+            if (isset($_GET['id'])) {
+                admin();
+            } else {
+                throw new Exception('L\'id de billet est invalide.');
+            }
         } elseif ($_GET['action'] == 'logout') {
             include 'controler/backend/logout.php';
             logout();
@@ -52,9 +56,9 @@ try {
                 throw new Exception('Erreur de suppréssion de billet.');
             }
         } elseif ($_GET['action'] == 'editpost') {
-            
-        } {
-            throw new Exception('Impossible de se déconnecter');
+            editPost($_GET['id'], $_POST['title'], $_POST['postContent']);
+        } else {
+            throw new Exception('Impossible de modifier l\'article');
         } 
     } elseif (isset($_GET['p'])) {
         if ($_GET['p'] == 'login') {

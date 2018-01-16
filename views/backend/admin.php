@@ -20,32 +20,34 @@ ob_start(); ?>
             <a class="nav-link active" href="#">Billets</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Commentaires</a>
+            <a class="nav-link" href="#com">Commentaires</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#">Compte Administrateur</a>
+            <a class="nav-link" href="#admin">Compte Administrateur</a>
         </li>
     </ul>
 
     <div class="tab-content">
         <div class="tab-pane fade show active" id="post" role="tabpanel">
             <br/>
-            <h4><?php 
+            <h4>
+                <?php 
             if (!empty($editpost)) {
                 echo "Modification du billet";
             } else {
                 echo "Création d'un nouveau billet";
-            }?></h4>
+            }?>
+            </h4>
             <form action="index.php?action=<?php if (!empty($editpost)) {echo 'editpost&id=' . $editpost['id'];} else {
                 echo 'addPost';
             } ?>" method="post">
                 <div class="form-group">
                     <label for="title">Titre du billet</label><br />
-                    <input type="text" class="form-control" name="title" value="<?php if (!empty($editpost)) {echo $editpost['title'];} ?>"/>
+                    <input type="text" class="form-control" name="title" value="<?php if (!empty($editpost)) {echo $editpost['title'];} ?>" />
                 </div>
                 <div class="form-group">
                     <label for="post">Contenu du billet</label><br />
-                    <input class="form-control" id="mce" name="postContent" value="<?php if (!empty($editpost)) {echo $editpost['content'];} ?>"></input>
+                    <input class="form-control" id="mce" name="postContent" value="<?php if (!empty($editpost)) {echo htmlspecialchars($editpost['content']);} ?>"></input>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-<?php if (!empty($editpost)) {echo 'success';} else {
@@ -55,7 +57,8 @@ ob_start(); ?>
                     {echo 'Modifier';
                     } else {
                         echo 'Publier';
-                    }?> le billet</button> <?php if (!empty($editpost)) {echo "<a class='btn btn-secondary' href='index.php?p=admin' role='button'>Annuler</a>";} ?>
+                    }?> le billet</button>
+                    <?php if (!empty($editpost)) {echo "<a class='btn btn-secondary' href='index.php?p=admin' role='button'>Annuler</a>";} ?>
                 </div>
             </form>
             <?php if (isset($message)) {
@@ -98,15 +101,13 @@ ob_start(); ?>
         </button>
                             </div>
                             <div class="modal-body text-center">
-                                Voulez-vous vraiment supprimer le billet "
-                                <?php echo $data['title'] ?>"de façon permanente ?
+                                Voulez-vous vraiment supprimer le billet "<strong>
+                                <?php echo $data['title'] ?></strong>" de façon permanente ?
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                                <a type="button" 
-                                href="index.php?action=deletepost&amp;id=<?php 
-                                echo $data['id'] ?>" 
-                                class="btn btn-danger">Supprimer</a>
+                                <a type="button" href="index.php?action=deletepost&amp;id=<?php 
+                                echo $data['id'] ?>" class="btn btn-danger">Supprimer</a>
                             </div>
                         </div>
                     </div>

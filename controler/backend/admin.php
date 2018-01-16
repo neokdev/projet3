@@ -27,8 +27,13 @@ function admin()
     
                 $editpost = $postManager->getPost($_GET['id']);
             }
+        } elseif (isset($_GET['editpost'])) {
+            if ($_GET['editpost'] == 'success') {
+                $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le billet à bien modifié !</div>";
+            } else {
+                $message =  "<div class=\"alert alert-danger text-center\" role=\"alert\"><strong>Erreur ! </strong>Le billet n'a pas pu être modifié</div>";
+            }
         }
-
         $postManager = new PostManager();
         $posts = $postManager->getPosts();
 
@@ -65,11 +70,11 @@ function editPost(int $id, string $title, string $content)
 {
     $postManager = new PostManager();
 
-    $deletedpost = $postManager->deletePost($id);
+    $editedpost = $postManager->editPost($id, $title, $content);
 
-    if ($deletedpost === false) {
-        throw new Exception('Impossible de supprimer le billet');
+    if ($editedpost === false) {
+        throw new Exception('Impossible de modifier le billet');
     } else {
-        header('Location: index.php?p=admin&deletepost=success');
+        header('Location: index.php?p=admin&editpost=success');
     }
 }
