@@ -57,6 +57,8 @@ try {
             }
         } elseif ($_GET['action'] == 'editpost') {
             editPost($_GET['id'], $_POST['title'], $_POST['postContent']);
+        }  elseif ($_GET['action'] == 'reportcomment') {
+            reportComment($_GET['id']);
         } else {
             throw new Exception('Impossible de modifier l\'article');
         } 
@@ -82,6 +84,10 @@ try {
             }
         } else {
             listPosts();
+        }
+    } elseif (isset($_GET['report'])) {
+        if ($_GET['report'] == 'success') {
+            die('success');
         }
     } else {
         listPosts();

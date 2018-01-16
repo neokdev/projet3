@@ -34,15 +34,25 @@ ob_start(); ?>
 <?php
 while ($comment = $comments->fetch()) {
 ?>
+
 <div class="comment card">
     <div class="card-header">
-    <p><strong><?php echo htmlspecialchars($comment['author']) ?></strong>
-     le <?php echo $comment['comment_date_fr'] ?></p>
+        <div class="row">
+            <div class="col">
+                <p><strong><?php echo htmlspecialchars($comment['author']) ?></strong></p>
+                 le <?php echo $comment['comment_date_fr'] ?></h5>
+            </div>
+            <div class="align-items-end">
+                <a type="button" role="button" href="index.php?action=reportcomment&amp;id=<?php 
+                echo $comment['id'] ?>" class="btn btn-info">Signaler</a>
+            </div>
+        </div>
     </div>
     <div class="card-body">
-    <p class="card-text"><?php echo nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <p class="card-text"><?php echo nl2br(htmlspecialchars($comment['comment'])) ?></p>
     </div>
 </div>
+
 <?php
 }
 ?>
@@ -56,8 +66,8 @@ id=<?php echo $post['id'] ?>" method="post">
     </div>
     <div class="form-group">
         <label for="comment">Commentaire</label><br />
-        <input class="form-control" rows="5" 
-        id="comment" name="comment"></input>
+        <textarea class="form-control" rows="5" 
+        id="comment" name="comment"></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-secondary">

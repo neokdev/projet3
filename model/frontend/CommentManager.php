@@ -53,7 +53,7 @@ class CommentManager extends Database
      * @param string $author  Comment Author
      * @param string $comment Comment
      * 
-     * @return $post
+     * @return bool $affectectedLines
      */
     public function postComment($postId, $author, $comment)
     {
@@ -66,5 +66,25 @@ class CommentManager extends Database
         $affectectedLines = $comments->execute(array($postId, $author, $comment));
 
         return $affectectedLines;
+    }
+    /**
+     * Report Comment
+     * 
+     * @param int $commentId Comment Id
+     * 
+     * @return bool $reportedcomment
+     */
+    public function setReported($commentId)
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare(
+            "UPDATE comments
+            SET report = 1
+            WHERE id = '$commentId'"
+        );
+
+        $reportedcomment = $comments->execute(array($commentId));
+
+        return $reportedcomment;
     }
 }

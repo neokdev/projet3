@@ -32,3 +32,15 @@ function addComment($postId, $author, $comment)
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
+function reportComment($commentId)
+{
+    $commentManager = new CommentManager();
+
+    $reportedcomment = $commentManager->setReported($commentId);
+
+    if ($reportedcomment === false) {
+        throw new Exception('Impossible de signaler le commentaire !');
+    } else {
+        header('Location: index.php?report=success');
+    }
+}
