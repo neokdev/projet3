@@ -14,29 +14,29 @@
 require_once '../model/frontend/PostManager.php';
 require_once '../model/frontend/CommentManager.php';
 /**
- * Post comment
+ * 
  * 
  * @return $post
  */
-function listPosts()
+function getPosts(string $message = null): void
 {
     $postManager = new PostManager();
-    $posts = $postManager->getPosts();
+    $posts = $postManager->selectPosts();
 
     include '../views/frontend/listPostsView.php';
 }
 /**
  * Get post list
  * 
- * @return view
+ * @return
  */
-function post()
+function getPostComment(int $postId, string $message = null): void
 {
     $postManager = new PostManager();
     $commentManager = new CommentManager();
     
-    $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getModerateComments($_GET['id']);
+    $post = $postManager->selectPostComment($postId);
+    $comments = $commentManager->selectModerateComments($postId);
 
     include '../views/frontend/postView.php';
 }

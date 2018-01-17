@@ -3,16 +3,16 @@ require_once '../src/Projet3/Database/Database.php';
 
 class AdminManager extends Database
 {
-    public function auth($email)
+    public function selectAuth(string $email)
     {
         $db = $this->dbConnect();
-        $res = $db->query(
+        $authReq = $db->query(
             "SELECT *
             FROM users
             WHERE email = '$email'"
         );
-        $user = $res->fetchAll(\PDO::FETCH_OBJ);
+        $auth = $authReq->fetchAll(\PDO::FETCH_OBJ);
         
-        return $user;
+        return $auth;
     }
 }

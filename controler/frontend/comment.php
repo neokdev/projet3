@@ -23,42 +23,24 @@ require_once '../model/frontend/CommentManager.php';
 function addComment($postId, $author, $comment)
 {
     $commentManager = new CommentManager();
-
-    $affectedLines = $commentManager->postComment($postId, $author, $comment);
+    $affectedLines = $commentManager->insertComment($postId, $author, $comment);
 
     if ($affectedLines === false) {
         throw new Exception('Impossible d\'ajouter le commentaire !');
     } else {
-        header('Location: index.php?action=post&id=' . $postId);
+        $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le commentaire a bien été ajouté !</div>";
+        getPostComment($postId, $message);
     }
 }
-function reportComment($postId, $commentId)
+function SetReportComment($postId, $commentId)
 {
     $commentManager = new CommentManager();
 
-    $setReportReq = $commentManager->setReported($commentId);
+    $setReportReq = $commentManager->updateReportComment($commentId);
 
     if ($setReportReq === false) {
         throw new Exception('Impossible de signaler le commentaire !');
     } else {
         header("Location: index.php?action=post&id=$postId&report=success");
     }
-}
-function getReportedComment()
-{
-    $commentManager = new CommentManager();
-
-    $reportedComments = $commentManager->getReportedComments();
-
-    include '../views/backend/admin.php';
-}
-function AllowComment($commentId)
-{
-    $postManager = new PostManager();
-    $commentManager = new CommentManager();
-    $posts = $postManager->getPosts();
-    $reportedComments = $commentManager->getReportedComments();
-    $setAllowedComment = $commentManager->setAllowedComment($commentId);
-
-    include '../views/backend/admin.php';
 }

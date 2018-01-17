@@ -8,8 +8,10 @@ function logout()
 
     if ($session->__isset('auth')) {
         $session->destroy();
-        listPosts();
+        $message = "<div class=\"alert alert-info text-center\" role=\"success\">Vous êtes déconnecté</div>";
+        getPosts($message);
     } else {
-        listPosts();
+        $message = "<div class=\"alert alert-danger text-center\" role=\"success\"><strong>Erreur !</strong> Impossible de se déconnecter</div>";
+        getPosts($message);
     }
 }

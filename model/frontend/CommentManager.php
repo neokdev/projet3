@@ -29,7 +29,7 @@ class CommentManager extends Database
      * 
      * @return $comments
      */
-    public function getComments($postId)
+    public function selectComment(int $postId)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
@@ -55,7 +55,7 @@ class CommentManager extends Database
      * 
      * @return bool $affectectedLines
      */
-    public function postComment($postId, $author, $comment)
+    public function insertComment(int $postId, string $author, string $comment)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
@@ -68,13 +68,32 @@ class CommentManager extends Database
         return $affectectedLines;
     }
     /**
+     * Delete Comment
+     * 
+     * @param int    $postId  Post Id
+     * 
+     * @return bool $affectectedLines
+     */
+    public function deleteComment(int $postId)
+    {
+        $db = $this->dbConnect();
+        $deleteCommentReq = $db->prepare(
+            "DELETE FROM comments
+            WHERE id = '$postId'"
+        );
+
+        $deleteComment = $deleteCommentReq->execute(array($postId));
+
+        return $deleteComment;
+    }
+    /**
      * Report Comment
      * 
      * @param int $commentId Comment Id
      * 
      * @return bool $reportedcomment
      */
-    public function setReported($commentId)
+    public function updateReportComment(int $commentId)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
@@ -94,7 +113,7 @@ class CommentManager extends Database
      * 
      * @return bool $setAllowReq
      */
-    public function setAllowedComment($commentId)
+    public function updateAllowComment(int $commentId)
     {
         $db = $this->dbConnect();
         $setAllowReq = $db->prepare(
@@ -103,9 +122,9 @@ class CommentManager extends Database
             WHERE id = '$commentId'"
         );
 
-        $setAllowReq->execute(array($commentId));
+        $setAllow = $setAllowReq->execute(array($commentId));
 
-        return $setAllowReq;
+        return $setAllow;
     }
     /**
      * Get Moderate Comment
@@ -114,7 +133,7 @@ class CommentManager extends Database
      * 
      * @return $comments
      */
-    public function getModerateComments($postId)
+    public function selectModerateComments(int $postId)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
@@ -138,7 +157,7 @@ class CommentManager extends Database
      * 
      * @return $comments
      */
-    public function getReportedComments()
+    public function selectReportedComment()
     {
         $db = $this->dbConnect();
         $getReportReq = $db->prepare(

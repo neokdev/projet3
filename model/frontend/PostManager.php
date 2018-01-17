@@ -27,7 +27,7 @@ class PostManager extends Database
      * 
      * @return $req
      */
-    public function getPosts()
+    public function selectPosts()
     {
         $db = $this->dbConnect();
         $req = $db->query(
@@ -48,7 +48,7 @@ class PostManager extends Database
      * 
      * @return bool $post
      */
-    public function getPost($postId)
+    public function selectPostComment($postId)
     {
         $db = $this->dbConnect();
         $req = $db->prepare(
@@ -71,7 +71,7 @@ class PostManager extends Database
      * 
      * @return bool $addedpost
      */
-    public function addPost(string $title, string $postContent )
+    public function insertPost(string $title, string $postContent)
     {
         $db = $this->dbConnect();
         $post = $db->prepare(
@@ -109,7 +109,7 @@ class PostManager extends Database
      * 
      * @return bool $post
      */
-    public function editPost(int $id, string $title, string $postContent)
+    public function updatePost(int $id, string $title, string $postContent)
     {
         $db = $this->dbConnect();
         $req = $db->prepare(
@@ -117,8 +117,8 @@ class PostManager extends Database
             SET title = "$title", content = "$postContent"
             WHERE id = "$id"'
         );
-        $editedpost = $req->execute(array($id, $title, $postContent));
+        $updatedpost = $req->execute(array($id, $title, $postContent));
 
-        return $editedpost;
+        return $updatedpost;
     }
 }

@@ -3,19 +3,16 @@
 require_once '../model/backend/AdminManager.php';
 require_once '../controler/backend/Session.php';
 
-function submitLogin($email, $password)
+function showLogin(string $message = null): void
 {
-    if (isset($_POST['password'])) {
-        $password = $_POST['password'];;
-    } 
-    if (isset($_POST['remember'])) {
-        $remember = "true";
-    } else {
-        $remember = "false";
-    } 
-     
+    include '../views/backend/login.php';
+    include '../views/nav.php';
+    include '../views/template.php';
+}
+function login(string $email, string $password, bool $remember)
+{
     $adminmanager = new AdminManager;
-    $user = $adminmanager->auth($email);
+    $user = $adminmanager->selectAuth($email);
     if (!empty($user)) {
         $passworddb = $user[0]->password;
         $userid = $user[0]->id;
@@ -28,12 +25,14 @@ function submitLogin($email, $password)
             $session->id = $userid;
             $session->email = $email;
             $session->date = $date;
-            listPosts();
+            $message = "<div class=\"alert alert-info text-center\" role=\"success\">Connecté depuis l'adresse : $session->email</div>";
+            getPosts($message);
         } else {
-            header('Location: index.php?p=login&err=wrongpass');
+            $message = "<div class=\"alert alert-danger text-center\" role=\"success\"><strong>Erreur !</strong> Le mot de passe est incorrect</div>";
+            showLogin($message);
         }
     } else {
-        header('Location: index.php?p=login&err=nomail');
-    }   
-    
+        $message = "<div class=\"alert alert-danger text-center\" role=\"success\"><strong>Erreur !</strong> Cet email n'est pas dans la base de données</div>";
+        showLogin($message);
+    }
 }

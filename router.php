@@ -11,16 +11,18 @@
  */
 require 'controler/frontend/post.php';
 require 'controler/frontend/comment.php';
-require 'controler/backend/users.php';
 require 'controler/backend/admin.php';
+require 'controler/backend/adminpost.php';
+require 'controler/backend/admincomment.php';
+require 'controler/backend/login.php';
 
 try {
     if (isset($_GET['action'])) {
-        if ($_GET['action'] == 'listPosts') {
-            listPosts();
+        if ($_GET['action'] == 'getPosts') {
+            getPosts();
         } elseif ($_GET['action'] == 'post') { 
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                post();
+                getPostComment($_GET['id']);
             } else { 
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
@@ -40,9 +42,11 @@ try {
             } else {
                 throw new Exception('Tous les champs ne sont pas remplis !');
             }
-        } elseif ($_GET['action'] == 'editpostform') {
-            if (isset($_GET['id'])) {
-                admin();
+        } elseif ($_GET['action'] == 'setpost') {
+            if (isset($_GET['id']) && isset($_POST['title']) && isset($_POST['postContent'])) {
+                setPost($_GET['id'], $_POST['title'], $_POST['postContent']);
+            } elseif (isset($_GET['id'])) {
+                showAdminSetPost($_GET['id']);
             } else {
                 throw new Exception('L\'id de billet est invalide.');
             }
@@ -51,16 +55,16 @@ try {
             logout();
         } elseif ($_GET['action'] == 'deletepost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
-                deletePost($_GET['id']);
+                delPost($_GET['id']);
             } else {
                 throw new Exception('Erreur de suppréssion de billet.');
             }
-        } elseif ($_GET['action'] == 'editpost') {
-            editPost($_GET['id'], $_POST['title'], $_POST['postContent']);
         } elseif ($_GET['action'] == 'reportcomment') {
-            reportComment($_GET['post_id'], $_GET['id']);
+            SetReportComment($_GET['post_id'], $_GET['id']);
         } elseif ($_GET['action'] == 'allowcomment') {
-            allowcomment($_GET['id']);
+            setAllowComment($_GET['id']);
+        } elseif ($_GET['action'] == 'deletecomment') {
+            delComment($_GET['id']);
         } else {
             throw new Exception('Action incorrecte');
         }
@@ -68,35 +72,22 @@ try {
         if ($_GET['p'] == 'login') {
             if (isset($_POST['submit'])) {
                 if (!empty($_POST['email']) && !empty($_POST['password'])) {
-                    include 'controler/backend/login.php';
-                    submitLogin($_POST['email'], $_POST['password']);
-                } 
-            } elseif (isset($_GET['err'])) {
-                (new User)->getAuth();
-            } else {
-                (new User)->getAuth();
-            }
-        } elseif ($_GET['p'] == 'admin') {
-            if (isset($_GET['addpost'])) {
-                admin();
-            } elseif (isset($_GET['deletepost'])) {
-                admin();
-            } elseif (isset($_GET['action'])) {
-                if ($_GET['action'] == 'allowcomment') {
-                    allowcomment($_GET['id']);
+                    login($_POST['email'], $_POST['password'], isset($_POST['remember']));
                 } else {
-                    throw new Exception('Impossible d\'autoriser le commentaire');
+                    throw new Exception('Veuillez remplir tous les champs');
                 }
             } else {
-                admin();
-            }
+                showLogin();
+            } 
+        } elseif ($_GET['p'] == 'admin') {
+            showAdmin();
         } else {
-            listPosts();
+            getPosts();
         }
     } else {
-        listPosts();
+        getPosts();
     }
-} 
+}
 
 catch(Exception $e) {
     $errorMessage = $e->getMessage();
