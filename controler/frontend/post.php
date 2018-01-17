@@ -36,7 +36,7 @@ function post()
     $commentManager = new CommentManager();
     
     $post = $postManager->getPost($_GET['id']);
-    $comments = $commentManager->getComments($_GET['id']);
+    $comments = $commentManager->getModerateComments($_GET['id']);
 
     include '../views/frontend/postView.php';
 }

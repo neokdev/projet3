@@ -33,7 +33,7 @@ class CommentManager extends Database
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
-            'SELECT id, author, comment, 
+            'SELECT id, author, comment, report, 
             DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') 
             AS comment_date_fr
             FROM comments
@@ -86,5 +86,73 @@ class CommentManager extends Database
         $reportedcomment = $comments->execute(array($commentId));
 
         return $reportedcomment;
+    }
+    /**
+     * Set Allowed Comment
+     * 
+     * @param int $commentId Comment Id
+     * 
+     * @return bool $setAllowReq
+     */
+    public function setAllowedComment($commentId)
+    {
+        $db = $this->dbConnect();
+        $setAllowReq = $db->prepare(
+            "UPDATE comments
+            SET report = 0
+            WHERE id = '$commentId'"
+        );
+
+        $setAllowReq->execute(array($commentId));
+
+        return $setAllowReq;
+    }
+    /**
+     * Get Moderate Comment
+     * 
+     * @param int $postId Post_Id
+     * 
+     * @return $comments
+     */
+    public function getModerateComments($postId)
+    {
+        $db = $this->dbConnect();
+        $comments = $db->prepare(
+            'SELECT id, author, comment, report, 
+            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+            AS comment_date_fr
+            FROM comments
+            WHERE post_id = ? && report != TRUE
+            ORDER BY comment_date 
+            DESC'
+        );
+
+        $comments->execute(array($postId));
+
+        return $comments;
+    }
+    /**
+     * Get Reported Comment
+     * 
+     * @param int $postId Post_Id
+     * 
+     * @return $comments
+     */
+    public function getReportedComments()
+    {
+        $db = $this->dbConnect();
+        $getReportReq = $db->prepare(
+            'SELECT id, author, comment, report, 
+            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+            AS comment_date_fr
+            FROM comments
+            WHERE report != FALSE
+            ORDER BY comment_date 
+            DESC'
+        );
+
+        $getReportReq->execute(array());
+
+        return $getReportReq;
     }
 }

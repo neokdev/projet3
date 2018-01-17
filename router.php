@@ -57,11 +57,13 @@ try {
             }
         } elseif ($_GET['action'] == 'editpost') {
             editPost($_GET['id'], $_POST['title'], $_POST['postContent']);
-        }  elseif ($_GET['action'] == 'reportcomment') {
-            reportComment($_GET['id']);
+        } elseif ($_GET['action'] == 'reportcomment') {
+            reportComment($_GET['post_id'], $_GET['id']);
+        } elseif ($_GET['action'] == 'allowcomment') {
+            allowcomment($_GET['id']);
         } else {
-            throw new Exception('Impossible de modifier l\'article');
-        } 
+            throw new Exception('Action incorrecte');
+        }
     } elseif (isset($_GET['p'])) {
         if ($_GET['p'] == 'login') {
             if (isset($_POST['submit'])) {
@@ -79,15 +81,17 @@ try {
                 admin();
             } elseif (isset($_GET['deletepost'])) {
                 admin();
+            } elseif (isset($_GET['action'])) {
+                if ($_GET['action'] == 'allowcomment') {
+                    allowcomment($_GET['id']);
+                } else {
+                    throw new Exception('Impossible d\'autoriser le commentaire');
+                }
             } else {
                 admin();
             }
         } else {
             listPosts();
-        }
-    } elseif (isset($_GET['report'])) {
-        if ($_GET['report'] == 'success') {
-            die('success');
         }
     } else {
         listPosts();

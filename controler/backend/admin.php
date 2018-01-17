@@ -35,7 +35,9 @@ function admin()
             }
         }
         $postManager = new PostManager();
+        $commentManager = new CommentManager();
         $posts = $postManager->getPosts();
+        $reportedComments = $commentManager->getReportedComments();
 
         include '../views/backend/admin.php';
     } else {

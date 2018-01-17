@@ -27,12 +27,12 @@ while ($data = $posts->fetch()) {
         </h5>
     </div>
     <div class="card-body">
-        <p class="card-text">
+        <div class="card-text">
             <?php echo $data['content'] ?>
             <br />
             <em><a class="card-link" href="index.php?action=post&amp;id=<?php echo $data['id'] ?>
             ">Commentaires</a></em>
-        </p>
+        </div>
     </div>
 </div>
 <?php

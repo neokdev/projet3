@@ -32,15 +32,33 @@ function addComment($postId, $author, $comment)
         header('Location: index.php?action=post&id=' . $postId);
     }
 }
-function reportComment($commentId)
+function reportComment($postId, $commentId)
 {
     $commentManager = new CommentManager();
 
-    $reportedcomment = $commentManager->setReported($commentId);
+    $setReportReq = $commentManager->setReported($commentId);
 
-    if ($reportedcomment === false) {
+    if ($setReportReq === false) {
         throw new Exception('Impossible de signaler le commentaire !');
     } else {
-        header('Location: index.php?report=success');
+        header("Location: index.php?action=post&id=$postId&report=success");
     }
+}
+function getReportedComment()
+{
+    $commentManager = new CommentManager();
+
+    $reportedComments = $commentManager->getReportedComments();
+
+    include '../views/backend/admin.php';
+}
+function AllowComment($commentId)
+{
+    $postManager = new PostManager();
+    $commentManager = new CommentManager();
+    $posts = $postManager->getPosts();
+    $reportedComments = $commentManager->getReportedComments();
+    $setAllowedComment = $commentManager->setAllowedComment($commentId);
+
+    include '../views/backend/admin.php';
 }

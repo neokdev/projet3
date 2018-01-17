@@ -14,7 +14,11 @@ $title = htmlspecialchars($post['title']);
 ob_start(); ?>
 <h1>Billet simple pour l'Alaska</h1>
 <p><a href="index.php?p=home">Retour à la liste des billets</a></p>
-
+<?php if (isset($_GET['report'])) {
+    if ($_GET['report'] == 'success') {
+        echo "<div class=\"alert alert-info text-center\" role=\"success\"><strong>Merci !</strong> Le commentaire à bien été signalé</div>";
+    }
+} ?>
 <div class="news card">
     <div class="card-header">
         <h5>
@@ -39,17 +43,18 @@ while ($comment = $comments->fetch()) {
     <div class="card-header">
         <div class="row">
             <div class="col">
-                <p><strong><?php echo htmlspecialchars($comment['author']) ?></strong></p>
-                 le <?php echo $comment['comment_date_fr'] ?></h5>
+                <strong><?php echo htmlspecialchars($comment['author']) ?></strong>
+                 le <?php echo $comment['comment_date_fr'] ?>
             </div>
             <div class="align-items-end">
-                <a type="button" role="button" href="index.php?action=reportcomment&amp;id=<?php 
+                <a type="button" role="button" href="index.php?action=reportcomment&amp;post_id=<?php 
+                echo $post['id'] ?>&amp;id=<?php 
                 echo $comment['id'] ?>" class="btn btn-info">Signaler</a>
             </div>
         </div>
     </div>
     <div class="card-body">
-        <p class="card-text"><?php echo nl2br(htmlspecialchars($comment['comment'])) ?></p>
+        <div class="card-text"><?php echo nl2br(htmlspecialchars($comment['comment'])) ?></div>
     </div>
 </div>
 
@@ -62,12 +67,12 @@ while ($comment = $comments->fetch()) {
 id=<?php echo $post['id'] ?>" method="post">
     <div class="form-group">
         <label for="author">Auteur</label><br />
-        <input type="text" class="form-control" id="author" name="author" />
+        <input type="text" class="form-control" id="author" name="author" required="true"/>
     </div>
     <div class="form-group">
         <label for="comment">Commentaire</label><br />
         <textarea class="form-control" rows="5" 
-        id="comment" name="comment"></textarea>
+        id="comment" name="comment" required="true"></textarea>
     </div>
     <div class="form-group">
         <button type="submit" class="btn btn-secondary">
