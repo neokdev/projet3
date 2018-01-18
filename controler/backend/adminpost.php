@@ -29,7 +29,7 @@ function setPost(int $id, string $title, string $content)
         if ($updatedpost === false) {
             throw new Exception('Impossible de modifier le billet');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le billet à bien modifié !</div>";
+            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le billet à bien été modifié !</div>";
             showAdmin($message);
         }
     } else {

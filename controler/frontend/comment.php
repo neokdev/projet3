@@ -20,7 +20,7 @@ require_once '../model/frontend/CommentManager.php';
  * 
  * @return $post
  */
-function addComment($postId, $author, $comment)
+function addComment(int $postId,string $author,string $comment)
 {
     $commentManager = new CommentManager();
     $affectedLines = $commentManager->insertComment($postId, $author, $comment);
@@ -32,7 +32,7 @@ function addComment($postId, $author, $comment)
         getPostComment($postId, $message);
     }
 }
-function SetReportComment($postId, $commentId)
+function SetReportComment(int $postId,int $commentId)
 {
     $commentManager = new CommentManager();
 

@@ -36,7 +36,7 @@ try {
             } else {
                 throw new Exception('Aucun identifiant de billet envoyé');
             }
-        } elseif ($_GET['action'] == 'addPost') {
+        } elseif ($_GET['action'] == 'addpost') {
             if (!empty($_POST['title']) && !empty($_POST['postContent'])) {
                 addPost($_POST['title'], $_POST['postContent']);
             } else {
@@ -63,6 +63,8 @@ try {
             SetReportComment($_GET['post_id'], $_GET['id']);
         } elseif ($_GET['action'] == 'allowcomment') {
             setAllowComment($_GET['id']);
+        } elseif ($_GET['action'] == 'deleteuser') {
+            delUser($_GET['id']);
         } elseif ($_GET['action'] == 'deletecomment') {
             delComment($_GET['id']);
         } else {
@@ -70,7 +72,7 @@ try {
         }
     } elseif (isset($_GET['p'])) {
         if ($_GET['p'] == 'login') {
-            if (isset($_POST['submit'])) {
+            if (isset($_POST['submitlogin'])) {
                 if (!empty($_POST['email']) && !empty($_POST['password'])) {
                     login($_POST['email'], $_POST['password'], isset($_POST['remember']));
                 } else {
@@ -80,7 +82,15 @@ try {
                 showLogin();
             } 
         } elseif ($_GET['p'] == 'admin') {
-            showAdmin();
+            if (isset($_POST['mail'])) {
+                setUser($_POST['mailmail'], $_POST['mailconfirm'], $_POST['mailpass']);
+            } elseif (isset($_POST['pass'])) {
+                setUserPass($_POST['passpass'], $_POST['passconfirm']);
+            } elseif (isset($_POST['user'])) {
+                addUser($_POST['adminmail'], $_POST['adminpass'], $_POST['adminconfirm']);
+            } else {
+                showAdmin();
+            }
         } else {
             getPosts();
         }

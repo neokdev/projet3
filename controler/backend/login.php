@@ -12,7 +12,7 @@ function showLogin(string $message = null): void
 function login(string $email, string $password, bool $remember)
 {
     $adminmanager = new AdminManager;
-    $user = $adminmanager->selectAuth($email);
+    $user = $adminmanager->selectUser($email);
     if (!empty($user)) {
         $passworddb = $user[0]->password;
         $userid = $user[0]->id;

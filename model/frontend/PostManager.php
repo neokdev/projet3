@@ -109,15 +109,15 @@ class PostManager extends Database
      * 
      * @return bool $post
      */
-    public function updatePost(int $id, string $title, string $postContent)
+    public function updatePost(int $id, string $title, string $content)
     {
         $db = $this->dbConnect();
         $req = $db->prepare(
-            'UPDATE posts
-            SET title = "$title", content = "$postContent"
-            WHERE id = "$id"'
+            "UPDATE posts
+            SET title = '$title', content = '$content'
+            WHERE id = '$id'"
         );
-        $updatedpost = $req->execute(array($id, $title, $postContent));
+        $updatedpost = $req->execute(array($id, $title, $content));
 
         return $updatedpost;
     }

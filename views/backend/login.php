@@ -30,7 +30,7 @@ ob_start();?>
         <label class="custom-control-label" for="customCheck1">Se souvenir de moi</label>
     </div>
 
-        <button type="submit" name="submit" class="btn btn-secondary">Confirmer</button>
+        <button type="submit" name="submitlogin" class="btn btn-secondary">Confirmer</button>
 </form>
 </div>
 <?php 

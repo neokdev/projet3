@@ -43,7 +43,7 @@ ob_start(); ?>
                 }?>
                 </h4>
                 <form action="index.php?action=<?php if (!empty($setPost)) {echo 'setpost&id=' . $setPost['id'];} else {
-                    echo 'addPost';
+                    echo 'addpost';
                 } ?>" method="post">
                     <div class="form-group">
                         <label for="title">Titre du billet</label><br />
@@ -131,60 +131,89 @@ ob_start(); ?>
             <div class="jumbotron">
                 <h4>Modifier l'adresse email de l'utilisateur actuel</h4>
                 <br/>
-                <form action="index.php?action=changepass" method="post"></form>
+                <form action="index.php?p=admin" method="post">
                     <div class="form-group">
                         <label for="mail">Veuillez entrer votre nouvelle adresse email</label>
-                        <input type="text" class="form-control" id="pass" name="mailmail" required="true"/>
+                        <input type="email" class="form-control" id="pass" name="mailmail" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="mailconfirm">Veuillez confirmer votre nouvelle adresse email</label>
-                        <input type="text" class="form-control" id="mailconfirm" name="mailconfirm" required="true"/>
+                        <input type="email" class="form-control" id="mailconfirm" name="mailconfirm" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="pass">Veuillez entrer votre mot de passe</label>
-                        <input type="password" class="form-control" id="pass" name="mailpass" required="true"/>
+                        <input type="password" class="form-control" id="pass" name="mailpass" required="true" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-secondary">
+                        <button name="mail" type="submit" class="btn btn-secondary">
                         Soumettre la requête</button>
                     </div>
+                </form>
             </div>
             <div class="jumbotron">
                 <h4>Modifier le mot de passe de l'utilisateur actuel</h4>
                 <br/>
-                <form action="index.php?action=changepass" method="post"></form>
+                <form action="index.php?p=admin" method="post">
                     <div class="form-group">
                         <label for="pass">Veuillez entrer votre nouveau mot de passe</label>
-                        <input type="password" class="form-control" id="pass" name="passpass" required="true"/>
+                        <input type="password" class="form-control" id="pass" name="passpass" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="passconfirm">Veuillez confirmer votre nouveau mot de passe</label>
-                        <input type="password" class="form-control" id="passconfirm" name="passconfirm" required="true"/>
+                        <input type="password" class="form-control" id="passconfirm" name="passconfirm" required="true" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-secondary">
+                        <button name="pass" type="submit" class="btn btn-secondary">
                         Soumettre la requête</button>
                     </div>
+                </form>
             </div>
             <div class="jumbotron">
                 <h4>Ajouter un administrateur</h4>
                 <br/>
-                <div class="form-group">
+                <form action="index.php?p=admin" method="post">
+                    <div class="form-group">
                         <label for="pass">Adresse email</label>
-                        <input type="text" class="form-control" id="pass" name="adminmail" required="true"/>
+                        <input type="email" class="form-control" id="pass" name="adminmail" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="pass">Mot de passe</label>
-                        <input type="password" class="form-control" id="passconfirm" name="adminpass" required="true"/>
+                        <input type="password" class="form-control" id="passconfirm" name="adminpass" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="pass">Veuillez confirmer votre mot de passe</label>
-                        <input type="password" class="form-control" id="pass" name="adminconfirm" required="true"/>
+                        <input type="password" class="form-control" id="pass" name="adminconfirm" required="true" />
                     </div>
                     <div class="form-group">
-                        <button type="submit" class="btn btn-secondary">
+                        <button name="user" type="submit" class="btn btn-secondary">
                         Soumettre la requête</button>
                     </div>
+                </form>
+            </div>
+            <div class="jumbotron">
+                <h4>Liste des administrateurs</h4>
+                <br/>
+                <?php
+                while ($user = $userList->fetch()) {?>
+                    <div class="card<?php if ($user['email'] == $session->email) {
+                            echo " bg-light ";
+                        }?>">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col">
+                                    <strong><?php echo $user['email']?></strong> créé le <em><?php echo $user['creation_date']?></em>
+                                </div>
+                                <div class="align-items-end">
+                                    <?php 
+                                    if ($user['email'] != $session->email) { 
+                                        $userId = $user['id'];
+                                        echo "<a type=\"button\" role=\"button\" href=\"index.php?action=deleteuser&id=$userId\" class=\"btn btn-danger\">Supprimer</a>";
+                                    }?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <?php } ?>
             </div>
         </div>
 
