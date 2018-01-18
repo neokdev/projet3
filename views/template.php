@@ -14,15 +14,16 @@
          * @see      http://www.projet3.nekbot.com/
          */
         echo $title ?></title>
-        <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
         <script> tinymce.init({
-            selector: '#mce'
+            selector: '#mce',
+            language_url: "/public/js/tinymce/langs/fr_FR.js"
         }); </script>
         <link rel="stylesheet" 
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" 
         integrity="sha384-Zug+QiDoJOrZ5t4lssLdxGhVrurbmBWopoEl+M6BdEfwnCJZtKxi1KgxUyJq13dy" 
         crossorigin="anonymous">
-        <link href="css/style.css" rel="stylesheet" /> 
+        <link href="public/css/style.css" rel="stylesheet" /> 
     </head>
         
     <body>
