@@ -35,7 +35,9 @@ function addComment(int $postId,string $author,string $comment, $captchaRes)
         if ($affectedLines === false) {
             throw new Exception('Impossible d\'ajouter le commentaire !');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le commentaire a bien été ajouté !</div>";
+            $message = "<div class=\"alert alert-success alert-dismissible fade show text-center\" role=\"alert\">Le commentaire à bien été ajouté<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button></div>";
             getPostComment($postId, $message);
         }
     } else {
@@ -53,6 +55,9 @@ function SetReportComment(int $postId,int $commentId)
     if ($setReportReq === false) {
         throw new Exception('Impossible de signaler le commentaire !');
     } else {
-        header("Location: index.php?action=post&id=$postId&report=success");
+        $message = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">Le commentaire à bien été signalé<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+        <span aria-hidden=\"true\">&times;</span>
+      </button></div>";
+            getPostComment($postId, $message);
     }
 }

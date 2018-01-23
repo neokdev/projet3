@@ -16,15 +16,15 @@ ob_start(); ?>
     <h1>Interface d'administration</h1>
     <p><a href="index.php?p=home">Retour à la liste des billets</a></p>
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item active">
-            <a class="nav-link active" data-toggle="tab" href="#post-tab">Billets</a>
+    <ul class="nav nav-tabs" id="adminTab">
+        <li class="nav-item">
+            <a class="nav-link active" href="#post-tab">Billets</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#com-tab">Commentaires</a>
+            <a class="nav-link" href="#com-tab">Commentaires</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#admin-tab">Administration</a>
+            <a class="nav-link" href="#admin-tab">Administration</a>
         </li>
     </ul>
 
@@ -32,7 +32,7 @@ ob_start(); ?>
     <div class="tab-content">
 
         <!-- Post Tab -->
-        <div id="post-tab" class="tab-pane active">
+        <div id="post-tab" class="tab-pane fade show active" role="tabpanel">
             <div class="jumbotron">
                 <h4>
                     <?php 
@@ -97,7 +97,7 @@ ob_start(); ?>
             </div>
         </div>
         <!-- Comment Tab -->
-        <div class="tab-pane fade" id="com-tab">
+        <div class="tab-pane fade" id="com-tab" role="tabpanel">
             <div class="jumbotron">
                 <h4>Commentaires signalés</h4>
                 <?php
@@ -127,22 +127,22 @@ ob_start(); ?>
         </div>
 
         <!-- Admin Tab -->
-        <div class="tab-pane fade" id="admin-tab">
+        <div class="tab-pane fade" id="admin-tab" role="tabpanel">
             <div class="jumbotron">
                 <h4>Modifier l'adresse email de l'utilisateur actuel</h4>
                 <br/>
                 <form action="index.php?p=admin" method="post">
                     <div class="form-group">
                         <label for="mail">Veuillez entrer votre nouvelle adresse email</label>
-                        <input type="email" class="form-control" id="pass" name="mailmail" required="true" />
+                        <input type="email" class="form-control" name="mailmail" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="mailconfirm">Veuillez confirmer votre nouvelle adresse email</label>
-                        <input type="email" class="form-control" id="mailconfirm" name="mailconfirm" required="true" />
+                        <input type="email" class="form-control" name="mailconfirm" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="pass">Veuillez entrer votre mot de passe</label>
-                        <input type="password" class="form-control" id="pass" name="mailpass" required="true" />
+                        <input type="password" class="form-control" name="mailpass" required="true" />
                     </div>
                     <div class="form-group">
                         <button name="mail" type="submit" class="btn btn-secondary">
@@ -156,11 +156,11 @@ ob_start(); ?>
                 <form action="index.php?p=admin" method="post">
                     <div class="form-group">
                         <label for="pass">Veuillez entrer votre nouveau mot de passe</label>
-                        <input type="password" class="form-control" id="pass" name="passpass" required="true" />
+                        <input type="password" class="form-control" name="passpass" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="passconfirm">Veuillez confirmer votre nouveau mot de passe</label>
-                        <input type="password" class="form-control" id="passconfirm" name="passconfirm" required="true" />
+                        <input type="password" class="form-control" name="passconfirm" required="true" />
                     </div>
                     <div class="form-group">
                         <button name="pass" type="submit" class="btn btn-secondary">
@@ -174,15 +174,15 @@ ob_start(); ?>
                 <form action="index.php?p=admin" method="post">
                     <div class="form-group">
                         <label for="pass">Adresse email</label>
-                        <input type="email" class="form-control" id="pass" name="adminmail" required="true" />
+                        <input type="email" class="form-control" name="adminmail" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="pass">Mot de passe</label>
-                        <input type="password" class="form-control" id="passconfirm" name="adminpass" required="true" />
+                        <input type="password" class="form-control" name="adminpass" required="true" />
                     </div>
                     <div class="form-group">
                         <label for="pass">Veuillez confirmer votre mot de passe</label>
-                        <input type="password" class="form-control" id="pass" name="adminconfirm" required="true" />
+                        <input type="password" class="form-control" name="adminconfirm" required="true" />
                     </div>
                     <div class="form-group">
                         <button name="user" type="submit" class="btn btn-secondary">

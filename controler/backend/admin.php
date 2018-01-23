@@ -19,7 +19,7 @@ function showAdmin(string $message = null): void
         $userList = $adminmanager->selectUserList();
         include '../views/backend/admin.php';
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function showAdminSetPost(int $id): void
@@ -40,7 +40,7 @@ function showAdminSetPost(int $id): void
 
         include '../views/backend/admin.php';
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function setUser(string $newMail, string $newMailconfirm, string $pass)
@@ -57,7 +57,9 @@ function setUser(string $newMail, string $newMailconfirm, string $pass)
                 if ($updatedUser === false) {
                     throw new Exception('Impossible de changer le mail !');
                 } else {
-                    $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le mail a bien été changé !</div>";
+                    $message = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">L'adresse email à bien été changée<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                    <span aria-hidden=\"true\">&times;</span>
+                  </button></div>";
                     showAdmin($message);
                 }
             } else {
@@ -67,7 +69,7 @@ function setUser(string $newMail, string $newMailconfirm, string $pass)
             throw new Exception("Les adresse emails sont différentes");
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function setUserPass(string $newPass, string $newPassConfirm)
@@ -82,14 +84,16 @@ function setUserPass(string $newPass, string $newPassConfirm)
             if ($updatedPass === false) {
                 throw new Exception('Impossible de changer le mot de passe !');
             } else {
-                $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le mot de passe a bien été changé !</div>";
+                $message = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">Le mot de passe a bien été changé<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                <span aria-hidden=\"true\">&times;</span>
+              </button></div>";
                 showAdmin($message);
             }
         } else {
             throw new Exception("Les mots de passe sont différents");
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function addUser(string $email, string $pass, string $passConfirm)
@@ -103,14 +107,16 @@ function addUser(string $email, string $pass, string $passConfirm)
             if ($addedPass === false) {
                 throw new Exception('Impossible d\'ajouter un nouvel administrateur !');
             } else {
-                $message = "<div class=\"alert alert-success text-center\" role=\"success\">L'administrateur a bien été ajouté !</div>";
+                $message = "<div class=\"alert alert-success alert-dismissible fade show text-center\" role=\"alert\">L'administrateur à bien été ajouté<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+                <span aria-hidden=\"true\">&times;</span>
+              </button></div>";
                 showAdmin($message);
             }
         } else {
             throw new Exception("Les mots de passe sont différents");
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function delUser(int $id)
@@ -124,10 +130,12 @@ function delUser(int $id)
         if ($deletedUser === false) {
             throw new Exception('Impossible de supprimmer cet administrateur !');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">L'administrateur a bien été supprimé !</div>";
+            $message = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">L'administrateur a bien été supprimé'<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button></div>";
             showAdmin($message);
         }
     }  else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }

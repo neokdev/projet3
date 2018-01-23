@@ -163,7 +163,7 @@ class CommentManager extends Database
         $commentCountReq = $db->prepare(
             'SELECT id, author, comment, report 
             FROM comments
-            WHERE post_id = ?'
+            WHERE post_id = ? && report != TRUE'
         );
 
         $commentCountReq->execute(array($postId));

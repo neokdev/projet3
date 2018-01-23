@@ -91,8 +91,10 @@ try {
             } else {
                 showAdmin();
             }
-        } else {
+        } elseif ($_GET['p'] == 'home') {
             getPosts();
+        } else {
+            header('HTTP/1.1 404 Not Found');
         }
     } else {
         getPosts();

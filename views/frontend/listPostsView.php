@@ -34,13 +34,22 @@ while ($data = $posts->fetch()) {
     <div class="card-footer">
         <div class="row">
             <div class="col">
-                <h6><em><a class="card-link" href="index.php?action=post&amp;id=<?php echo $data['id'] ?>">Voir le billet</a></em>
+                <h6><em><a class="card-link" href="index.php?action=post&amp;id=<?php echo $data['id'] ?>">Voir le billet</a></em></h6>
             </div>
             <div class="align-items-end">
-                Commentaire<?php if (getCommentEnum($data['id']) != 1) {
-                    echo "s";
+                <h6><?php 
+                if (getCommentEnum($data['id']) > 0) {
+                    echo '<span class="badge badge-pill badge-info">' . getCommentEnum($data['id']) . '</span> 
+                    <a href="index.php?action=post&amp;id=' . $data['id'] . '">commentaire'; 
+                    if (getCommentEnum($data['id']) != 1) {
+                        echo "s</a>";
+                    } else {
+                        echo "</a>";
+                    }
+                } else {
+                    echo 'aucun commentaire';
                 } ?>
-                <span class="badge badge-info"><?php echo getCommentEnum($data['id']); ?></span></h6>
+                </h6>
             </div>
         </div>
     </div>

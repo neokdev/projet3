@@ -18,7 +18,9 @@
         <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
         <script> tinymce.init({
             selector: '#mce',
-            language_url: "/public/js/tinymce/langs/fr_FR.js"
+            height : 600,
+            content_css : 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css',
+            language_url: "public/js/tinymce/langs/fr_FR.js"
         }); </script>
         <link rel="stylesheet" 
         href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css" 
@@ -42,6 +44,7 @@
             <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/js/bootstrap.min.js" 
             integrity="sha384-a5N7Y/aK3qNeh15eJKGWxsqtnX/wWdSZSKp+81YjTmS15nvnvxKHuzaWwXHDli+4" 
             crossorigin="anonymous"></script>
+            <script src="/public/js/app.js"></script>
         </div>
     </body>
 </html>

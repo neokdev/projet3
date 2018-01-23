@@ -6,6 +6,8 @@
 body
 {
     padding-top: 70px;
+    background-image: url("/public/images/background.jpg");
+    background-attachment: fixed;
 }
 
 #navbarNav .navbar-nav .nav-item
@@ -16,4 +18,16 @@ body
 #card-body
 {
     overflow: hidden;
+}
+body .container p a 
+{
+    color: black;
+}
+body .container .nav li a
+{
+    color: black;
+}
+div .jumbotron
+{
+    margin-top: 3%;
 }

@@ -11,7 +11,9 @@ function addPost(string $title, string $postContent)
         if ($addContent === false) {
             throw new Exception('Impossible d\'ajouter le billet');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le billet à bien été posté !</div>";
+            $message = "<div class=\"alert alert-success alert-dismissible fade show text-center\" role=\"alert\">Le billet à bien été ajouté<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button></div>";
             showAdmin($message);
         }
     } else {
@@ -29,7 +31,9 @@ function setPost(int $id, string $title, string $content)
         if ($updatedpost === false) {
             throw new Exception('Impossible de modifier le billet');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le billet à bien été modifié !</div>";
+            $message = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">Le billet à bien été modifié<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button></div>";
             showAdmin($message);
         }
     } else {
@@ -47,7 +51,9 @@ function delPost(int $id)
         if ($deletedpost === false) {
             throw new Exception('Impossible de supprimer le billet');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le billet à bien supprimé !</div>";
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show text-center\" role=\"alert\">Le billet à bien été supprimé<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button></div>";
             showAdmin($message);
         }
     } else {

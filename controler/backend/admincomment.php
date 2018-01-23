@@ -10,7 +10,7 @@ function getReportedComment()
         $reportedComments = $commentManager->getReportedComments();
 
         if ($deletedComment === false) {
-            throw new Exception('Impossible d\'afficher les commentaires !');
+            throw new Exception('Impossible d\'afficher les commentaires');
         } else {
             showAdmin($message);
         }
@@ -29,9 +29,11 @@ function delComment(int $postId)
         $deletedComment = $commentManager->deleteComment($postId);
 
         if ($deletedComment === false) {
-            throw new Exception('Impossible d\'éffacer le commentaire !');
+            throw new Exception('Impossible d\'éffacer le commentaire');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le commentaire à bien été supprimé !</div>";
+            $message = "<div class=\"alert alert-warning alert-dismissible fade show text-center\" role=\"alert\">Le commentaire à bien été supprimé<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button></div>";
             showAdmin($message);
         }
     } else {
@@ -49,7 +51,9 @@ function setAllowComment($commentId)
         if ($allowedComment === false) {
             throw new Exception('Impossible d\autoriser le commentaire !');
         } else {
-            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le commentaire à bien été autorisé !</div>";
+            $message = "<div class=\"alert alert-info alert-dismissible fade show text-center\" role=\"alert\">Le commentaire à bien été autorisé<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
+            <span aria-hidden=\"true\">&times;</span>
+          </button></div>";
             showAdmin($message);
         }
     } else {
