@@ -21,6 +21,7 @@ require_once '../model/frontend/CommentManager.php';
 function getPosts(string $message = null): void
 {
     $postManager = new PostManager();
+
     $posts = $postManager->selectPosts();
 
     include '../views/frontend/listPostsView.php';
@@ -39,4 +40,17 @@ function getPostComment(int $postId, string $message = null): void
     $comments = $commentManager->selectModerateComments($postId);
 
     include '../views/frontend/postView.php';
+}
+function getCommentEnum(int $postId): ?int
+{
+    $commentManager = new CommentManager();
+
+    $commentEnum = $commentManager->selectModerateCommentCount($postId);
+
+    if (isset($commentEnum)) {
+        return $commentEnum;
+    } else {
+        return 0;
+    }
+    
 }

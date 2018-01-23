@@ -34,12 +34,12 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
         $updateUserReq = $db->prepare(
-            "UPDATE users
-            SET email = '$email'
-            WHERE id = '$id'"
+            'UPDATE users
+            SET email = :email
+            WHERE id = :id'
         );
 
-        $updateUser = $updateUserReq->execute(array($id, $email));
+        $updateUser = $updateUserReq->execute(array(':id'=>$id,'email'=>$email));
 
         return $updateUser;
     }
@@ -47,12 +47,12 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
         $updatePassReq = $db->prepare(
-            "UPDATE users
-            SET password = '$pass'
-            WHERE id = '$id'"
+            'UPDATE users
+            SET password = :pass
+            WHERE id = :id'
         );
 
-        $updatePass = $updatePassReq->execute(array($id, $pass));
+        $updatePass = $updatePassReq->execute(array(':id'=>$id,':pass'=>$pass));
 
         return $updatePass;
     }
@@ -72,11 +72,11 @@ class AdminManager extends Database
     {
         $db = $this->dbConnect();
         $deleteUserReq = $db->prepare(
-            "DELETE FROM users
-            WHERE id = '$userId'"
+            'DELETE FROM users
+            WHERE id = :userId'
         );
 
-        $deletedUser = $deleteUserReq->execute(array($userId));
+        $deletedUser = $deleteUserReq->execute(array(':userId'=>$userId));
 
         return $deletedUser;
     }

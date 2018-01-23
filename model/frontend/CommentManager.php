@@ -151,6 +151,28 @@ class CommentManager extends Database
         return $comments;
     }
     /**
+     * Get Moderate Comment Count
+     * 
+     * @param int $postId Post_Id
+     * 
+     * @return $commentCount
+     */
+    public function selectModerateCommentCount(int $postId)
+    {
+        $db = $this->dbConnect();
+        $commentCountReq = $db->prepare(
+            'SELECT id, author, comment, report 
+            FROM comments
+            WHERE post_id = ?'
+        );
+
+        $commentCountReq->execute(array($postId));
+        $commentsCountArray = $commentCountReq->fetchAll();
+        $commentCount = count($commentsCountArray);
+
+        return $commentCount;
+    }
+    /**
      * Get Reported Comment
      * 
      * @param int $postId Post_Id

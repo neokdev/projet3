@@ -39,7 +39,7 @@ function addComment(int $postId,string $author,string $comment, $captchaRes)
             getPostComment($postId, $message);
         }
     } else {
-        throw new Exception('Captcha non valide');
+        throw new Exception('Captcha manquant ou non valide');
     }
 
     

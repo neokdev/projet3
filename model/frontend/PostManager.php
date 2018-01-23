@@ -48,7 +48,7 @@ class PostManager extends Database
      * 
      * @return bool $post
      */
-    public function selectPostComment($postId)
+    public function selectPostComment(int $postId)
     {
         $db = $this->dbConnect();
         $req = $db->prepare(
@@ -93,10 +93,10 @@ class PostManager extends Database
     {
         $db = $this->dbConnect();
         $req = $db->prepare(
-            "DELETE FROM posts
-            WHERE id = '$id'"
+            'DELETE FROM posts
+            WHERE id = :id'
         );
-        $deletedpost = $req->execute(array($id));
+        $deletedpost = $req->execute(array(':id'=>$id));
 
         return $deletedpost;
     }
@@ -113,11 +113,11 @@ class PostManager extends Database
     {
         $db = $this->dbConnect();
         $req = $db->prepare(
-            "UPDATE posts
-            SET title = '$title', content = '$content'
-            WHERE id = '$id'"
+            'UPDATE posts
+            SET title = :title, content = :content
+            WHERE id = :id'
         );
-        $updatedpost = $req->execute(array($id, $title, $content));
+        $updatedpost = $req->execute(array(':id'=>$id,':title'=>$title,':content'=>$content));
 
         return $updatedpost;
     }
