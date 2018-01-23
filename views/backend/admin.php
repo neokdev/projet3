@@ -80,8 +80,8 @@ ob_start(); ?>
                                         <em>le <?php echo $data['creation_date_fr'] ?></em></h5>
                                 </div>
                                 <div class="align-items-end">
-                                    <a type="button" role="button" href="index.php?action=setpost&amp;id=<?php echo $data['id'];?>" class="btn btn-info">Editer</a>
-                                    <a type="button" role="button" href="index.php?action=deletepost&amp;id=<?php echo $data['id'] ?>" class="btn btn-danger">Effacer</a>
+                                    <a role="button" href="index.php?action=setpost&amp;id=<?php echo $data['id'];?>" class="btn btn-info">Editer</a>
+                                    <a role="button" href="index.php?action=deletepost&amp;id=<?php echo $data['id']?>" class="btn btn-danger">Effacer</a>
                                 </div>
                             </div>
                         </div>
@@ -111,8 +111,8 @@ ob_start(); ?>
                                     </h5>
                                 </div>
                                 <div class="align-items-end">
-                                    <a type="button" role="button" href="index.php?action=allowcomment&amp;id=<?php echo $reportedComment['id']?>" class="btn btn-success">Autoriser</a>
-                                    <a type="button" role="button" href="index.php?action=deletecomment&amp;id=<?php echo $reportedComment['id'] ?>" class="btn btn-danger">Supprimer</a>
+                                    <a role="button" href="index.php?action=allowcomment&amp;id=<?php echo $reportedComment['id']?>" class="btn btn-success">Autoriser</a>
+                                    <a role="button" href="index.php?action=deletecomment&amp;id=<?php echo $reportedComment['id']?>" class="btn btn-danger">Supprimer</a>
                                 </div>
                             </div>
                         </div>
@@ -207,7 +207,7 @@ ob_start(); ?>
                                     <?php 
                                     if ($user['email'] != $session->email) { 
                                         $userId = $user['id'];
-                                        echo "<a type=\"button\" role=\"button\" href=\"index.php?action=deleteuser&id=$userId\" class=\"btn btn-danger\">Supprimer</a>";
+                                        echo "<a role=\"button\" href=\"index.php?action=deleteuser&id=$userId\" class=\"btn btn-danger\">Supprimer</a>";
                                     }?>
                                 </div>
                             </div>
