@@ -18,13 +18,13 @@ ob_start(); ?>
 
     <ul class="nav nav-tabs" id="adminTab">
         <li class="nav-item">
-            <a class="nav-link active" href="#post-tab">Billets</a>
+            <a class="nav-link active" data-toggle="tab" href="#post-tab">Billets</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#com-tab">Commentaires</a>
+            <a class="nav-link" data-toggle="tab" href="#com-tab">Commentaires</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" href="#admin-tab">Administration</a>
+            <a class="nav-link" data-toggle="tab" href="#admin-tab">Administration</a>
         </li>
     </ul>
 

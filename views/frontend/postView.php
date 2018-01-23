@@ -47,9 +47,9 @@ while ($comment = $comments->fetch()) {
                  le <?php echo $comment['comment_date_fr'] ?>
             </div>
             <div class="align-items-end">
-                <a type="button" role="button" href="index.php?action=reportcomment&amp;post_id=<?php 
+                <a role="button" class="btn btn-info" href="index.php?action=reportcomment&amp;post_id=<?php 
                 echo $post['id'] ?>&amp;id=<?php 
-                echo $comment['id'] ?>" class="btn btn-info">Signaler</a>
+                echo $comment['id'] ?>">Signaler</a>
             </div>
         </div>
     </div>
