@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta charset="utf-8" />
+        <script src='https://www.google.com/recaptcha/api.js'></script>
         <title><?php
         /**
          * Template

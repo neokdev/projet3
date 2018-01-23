@@ -20,17 +20,29 @@ require_once '../model/frontend/CommentManager.php';
  * 
  * @return $post
  */
-function addComment(int $postId,string $author,string $comment)
+function addComment(int $postId,string $author,string $comment, $captchaRes)
 {
-    $commentManager = new CommentManager();
-    $affectedLines = $commentManager->insertComment($postId, $author, $comment);
+    $captchaSecret = "6LehEEIUAAAAAAqGTioOG9n25EWvGvP5IVFFvcMV";
+    $captchaRemoteIp = $_SERVER['REMOTE_ADDR'];
+    $api_url = "https://www.google.com/recaptcha/api/siteverify?secret=" . $captchaSecret . "&response=" . $captchaRes . "&remoteip=" . $captchaRemoteIp;
 
-    if ($affectedLines === false) {
-        throw new Exception('Impossible d\'ajouter le commentaire !');
+    $decode = json_decode(file_get_contents($api_url), true);
+
+    if ($decode['success'] == true) {
+        $commentManager = new CommentManager();
+        $affectedLines = $commentManager->insertComment($postId, $author, $comment);
+
+        if ($affectedLines === false) {
+            throw new Exception('Impossible d\'ajouter le commentaire !');
+        } else {
+            $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le commentaire a bien été ajouté !</div>";
+            getPostComment($postId, $message);
+        }
     } else {
-        $message = "<div class=\"alert alert-success text-center\" role=\"success\">Le commentaire a bien été ajouté !</div>";
-        getPostComment($postId, $message);
+        throw new Exception('Captcha non valide');
     }
+
+    
 }
 function SetReportComment(int $postId,int $commentId)
 {

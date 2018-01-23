@@ -74,6 +74,9 @@ id=<?php echo $post['id'] ?>" method="post">
         <textarea class="form-control" rows="5" 
         id="comment" name="comment" required="true"></textarea>
     </div>
+    <div class="form-group g-recaptcha" 
+          data-sitekey="6LehEEIUAAAAACQ7kovRm8iD5K35cCs1SYbuJ4xa">
+          </div>
     <div class="form-group">
         <button type="submit" class="btn btn-secondary">
         Soumettre la requête</button>
