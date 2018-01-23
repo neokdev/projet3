@@ -86,9 +86,9 @@ ob_start(); ?>
                             </div>
                         </div>
                         <div class="card-body">
-                            <p class="card-text">
+                            <div class="card-text" id="card-body">
                                 <?php echo $data['content'] ?>
-                            </p>
+                            </div>
                         </div>
                     </div>
                     <?php
@@ -196,7 +196,7 @@ ob_start(); ?>
                 <?php
                 while ($user = $userList->fetch()) {?>
                     <div class="card<?php if ($user['email'] == $session->email) {
-                            echo " bg-light ";
+                            echo " bg-secondary text-white";
                         }?>">
                         <div class="card-body">
                             <div class="row">

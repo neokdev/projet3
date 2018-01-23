@@ -74,7 +74,7 @@ try {
         if ($_GET['p'] == 'login') {
             if (isset($_POST['submitlogin'])) {
                 if (!empty($_POST['email']) && !empty($_POST['password'])) {
-                    login($_POST['email'], $_POST['password'], isset($_POST['remember']));
+                    login($_POST['email'], $_POST['password']);
                 } else {
                     throw new Exception('Veuillez remplir tous les champs');
                 }

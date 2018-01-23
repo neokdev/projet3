@@ -9,7 +9,7 @@ function showLogin(string $message = null): void
     include '../views/nav.php';
     include '../views/template.php';
 }
-function login(string $email, string $password, bool $remember)
+function login(string $email, string $password)
 {
     $adminmanager = new AdminManager;
     $user = $adminmanager->selectUser($email);

@@ -26,14 +26,14 @@ while ($data = $posts->fetch()) {
             <em>le <?php echo $data['creation_date_fr'] ?></em>
         </h5>
     </div>
-    <div class="card-body">
-        <div class="card-text">
+    <div class="card-body" id="card-body" style="max-height: 200px">
+        <div>
             <?php echo $data['content'] ?>
-            <br />
-            <em><a class="card-link" href="index.php?action=post&amp;id=<?php echo $data['id'] ?>
-            ">Commentaires</a></em>
         </div>
     </div>
+    <div class="card-footer">
+    <em><a class="card-link" href="index.php?action=post&amp;id=<?php echo $data['id'] ?>">Voir le billet</a></em>
+  </div>
 </div>
 <?php
 }

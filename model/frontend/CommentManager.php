@@ -34,7 +34,7 @@ class CommentManager extends Database
         $db = $this->dbConnect();
         $comments = $db->prepare(
             'SELECT id, author, comment, report, 
-            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') 
             AS comment_date_fr
             FROM comments
             WHERE post_id = ? 
@@ -138,7 +138,7 @@ class CommentManager extends Database
         $db = $this->dbConnect();
         $comments = $db->prepare(
             'SELECT id, author, comment, report, 
-            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') 
             AS comment_date_fr
             FROM comments
             WHERE post_id = ? && report != TRUE
@@ -162,7 +162,7 @@ class CommentManager extends Database
         $db = $this->dbConnect();
         $getReportReq = $db->prepare(
             'SELECT id, author, comment, report, 
-            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') 
             AS comment_date_fr
             FROM comments
             WHERE report != FALSE

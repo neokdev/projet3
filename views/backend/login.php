@@ -25,12 +25,7 @@ ob_start();?>
       <label for="validationDefaultPassword">Mot de passe</label>
       <input type="password" name="password" class="form-control" id="validationDefaultPassword" placeholder="Mot de passe" required>
     </div>
-    <div class="form-group custom-control custom-checkbox">
-        <input type="checkbox" name="remember" class="custom-control-input" id="customCheck1">
-        <label class="custom-control-label" for="customCheck1">Se souvenir de moi</label>
-    </div>
-
-        <button type="submit" name="submitlogin" class="btn btn-secondary">Confirmer</button>
+    <button type="submit" name="submitlogin" class="btn btn-secondary">Confirmer</button>
 </form>
 </div>
 <?php 

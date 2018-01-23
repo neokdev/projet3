@@ -32,7 +32,7 @@ class PostManager extends Database
         $db = $this->dbConnect();
         $req = $db->query(
             'SELECT id, title, content, 
-            DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+            DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') 
             AS creation_date_fr
             FROM posts
             ORDER BY creation_date 
@@ -53,7 +53,7 @@ class PostManager extends Database
         $db = $this->dbConnect();
         $req = $db->prepare(
             'SELECT id, title, content, 
-            DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%imin%ss\') 
+            DATE_FORMAT(creation_date, \'%d/%m/%Y à %Hh%i\') 
             AS creation_date_fr
             FROM posts
             WHERE id = ?'
