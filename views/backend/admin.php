@@ -13,18 +13,17 @@ $title = 'Administration';
 
 
 ob_start(); ?>
-    <h1>Interface d'administration</h1>
-    <p><a href="index.php?p=home">Retour à la liste des billets</a></p>
+    <h1>Interface d'administration</h1><br />
 
     <ul class="nav nav-tabs" id="adminTab">
         <li class="nav-item">
-            <a class="nav-link active" data-toggle="tab" href="#post-tab">Billets</a>
+            <a class="nav-link active" data-toggle="tab" href="#post-tab"><i class="far fa-clipboard"></i> Billets</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#com-tab">Commentaires</a>
+            <a class="nav-link" data-toggle="tab" href="#com-tab"><i class="far fa-comments"></i> Commentaires</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" data-toggle="tab" href="#admin-tab">Administration</a>
+            <a class="nav-link" data-toggle="tab" href="#admin-tab"><i class="fas fa-unlock-alt"></i> Administration</a>
         </li>
     </ul>
 
@@ -58,9 +57,9 @@ ob_start(); ?>
                             echo 'primary';
                         } ?>">
                         <?php if (!empty($setPost)) 
-                        {echo 'Modifier';
+                        {echo '<i class="far fa-edit"></i> Modifier';
                         } else {
-                            echo 'Publier';
+                            echo '<i class="far fa-share-square"></i> Publier';
                         }?> le billet</button>
                         <?php if (!empty($setPost)) {echo "<a class='btn btn-secondary' href='index.php?p=admin' role='button'>Annuler</a>";} ?>
                     </div>
@@ -80,8 +79,8 @@ ob_start(); ?>
                                         <em>le <?php echo $data['creation_date_fr'] ?></em></h5>
                                 </div>
                                 <div class="align-items-end">
-                                    <a role="button" href="index.php?action=setpost&amp;id=<?php echo $data['id'];?>" class="btn btn-info">Editer</a>
-                                    <a role="button" data-date="<?php echo $data['creation_date_fr']?>" data-toggle="modal" data-target="#deleteModal" data-title="<?php echo $data['title']?>" data-link="index.php?action=deletepost&amp;id=<?php echo $data['id']?>" href="#" class="btn btn-danger">Effacer</a>
+                                    <a role="button" href="index.php?action=setpost&amp;id=<?php echo $data['id'];?>" class="btn btn-info"><i class="far fa-edit"></i> Editer</a>
+                                    <a role="button" data-type="billet" data-date="<?php echo $data['creation_date_fr']?>" data-toggle="modal" data-target="#deleteModal" data-title="<?php echo $data['title']?>" data-link="index.php?action=deletepost&amp;id=<?php echo $data['id']?>" href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Effacer</a>
                                 </div>
                             </div>
                         </div>
@@ -93,30 +92,37 @@ ob_start(); ?>
                     </div>
                     <?php
                 }
-            $posts->closeCursor();?>
+                $markerPost = true;
+            $posts->closeCursor();
+            if (!isset($markerPost)) {
+                echo "<div class=\"alert alert-info fade show text-center\" role=\"alert\">Il n'existe encore aucun billet</div>";
+            }
+            ?>
             </div>
         </div>
-        
+
         <!--  Delete Modal -->
         <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title">Supprimer le billet</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 id="modal-type" class="modal-title"></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
+                    </div>
+                    <div class="modal-body">
+                        <div id="modal-body"></div>
+                        <div id="modal-author"></div>
+                        <div id="modal-title"></div>
+                        <div id="modal-date"></div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                        <a type="button" id="ok" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                    </div>
+                </div>
             </div>
-            <div class="modal-body">
-                <div id="modal-title"></div>
-                <div id="modal-date"></div>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                <a type="button" id="ok" class="btn btn-danger">Supprimer</a>
-            </div>
-            </div>
-        </div>
         </div>
 
         <!-- Comment Tab -->
@@ -130,12 +136,13 @@ ob_start(); ?>
                             <div class="row">
                                 <div class="col">
                                     <h5><strong><?php echo htmlspecialchars($reportedComment['author'])?></strong> le
-                                        <?php echo $reportedComment['comment_date_fr'] ?>
+                                        <?php echo $reportedComment['comment_date_fr'] ?> dans "
+                                        <?php echo $modalRepComTitle = (new PostManager)->selectPostComment($reportedComment['post_id'])['title']; ?>"
                                     </h5>
                                 </div>
                                 <div class="align-items-end">
-                                    <a role="button" href="index.php?action=allowcomment&amp;id=<?php echo $reportedComment['id']?>" class="btn btn-success">Autoriser</a>
-                                    <a role="button" href="index.php?action=deletecomment&amp;id=<?php echo $reportedComment['id']?>" class="btn btn-danger">Supprimer</a>
+                                    <a role="button" href="index.php?action=allowcomment&amp;id=<?php echo $reportedComment['id']?>" class="btn btn-success"><i class="fas fa-shield-alt"></i> Autoriser</a>
+                                    <a role="button" data-author="<?php echo htmlspecialchars($reportedComment['author'])?>" data-type="comment" data-toggle="modal" data-title="<?php echo $modalRepComTitle;?>" data-date="<?php echo $reportedComment['comment_date_fr'] ?>" data-target="#deleteModal" data-link="index.php?action=deletecomment&amp;id=<?php echo $reportedComment['id']?>" href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</a>
                                 </div>
                             </div>
                         </div>
@@ -145,7 +152,39 @@ ob_start(); ?>
                             </p>
                         </div>
                     </div>
-                    <?php } ?>
+                    <?php
+                    $markerReportedComment = true; } 
+                    if (!isset($markerReportedComment)) {
+                        echo "<div class=\"alert alert-info fade show text-center\" role=\"alert\">Aucun commentaire signalé</div>";}?>
+            </div>
+            <div class="jumbotron">
+                <h4>Autres Commentaires</h4>
+                <?php
+                while ($comment = $comments->fetch()) {?>
+                    <div class="comment card">
+                        <div class="card-header">
+                            <div class="row">
+                                <div class="col">
+                                    <h5><strong><?php echo htmlspecialchars($comment['author'])?></strong> le
+                                        <?php echo $comment['comment_date_fr'] ?> dans "
+                                        <?php echo $modalComTitle = (new PostManager)->selectPostComment($comment['post_id'])['title']; ?>"
+                                    </h5>
+                                </div>
+                                <div class="align-items-end">
+                                    <a role="button" data-type="comment" data-toggle="modal" data-title="<?php echo $modalComTitle;?>" data-date="<?php echo $comment['comment_date_fr'] ?>" data-target="#deleteModal" data-link="index.php?action=deletecomment&amp;id=<?php echo $comment['id']?>" href="#" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <p class="card-text">
+                                <?php echo nl2br(htmlspecialchars($comment['comment'])) ?>
+                            </p>
+                        </div>
+                    </div>
+                    <?php
+                    $markerComment = true; } 
+                    if (!isset($markerComment)) {
+                        echo "<div class=\"alert alert-info fade show text-center\" role=\"alert\">Aucun autre commentaire</div>";}?>
             </div>
         </div>
 
@@ -219,7 +258,7 @@ ob_start(); ?>
                 <?php
                 while ($user = $userList->fetch()) {?>
                     <div class="card<?php if ($user['email'] == $session->email) {
-                            echo " bg-secondary text-white";
+                            echo " bg-secondary text-white ";
                         }?>">
                         <div class="card-body">
                             <div class="row">
@@ -230,7 +269,8 @@ ob_start(); ?>
                                     <?php 
                                     if ($user['email'] != $session->email) { 
                                         $userId = $user['id'];
-                                        echo "<a role=\"button\" href=\"index.php?action=deleteuser&id=$userId\" class=\"btn btn-danger\">Supprimer</a>";
+                                        $usermail = $user['email'];
+                                        echo "<a role=\"button\" data-title=\"$usermail\" data-type=\"user\" data-toggle=\"modal\" data-target=\"#deleteModal\" href=\"\" data-link=\"index.php?action=deleteuser&id=$userId\" class=\"btn btn-danger\"><i class=\"fas fa-trash-alt\"></i> Supprimer</a>";
                                     }?>
                                 </div>
                             </div>

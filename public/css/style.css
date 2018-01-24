@@ -21,6 +21,7 @@ body
 }
 body .container p a 
 {
+    text-decoration: none;
     color: black;
 }
 body .container .nav li a

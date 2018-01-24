@@ -152,7 +152,7 @@ class CommentManager extends Database
      * 
      * @return $comments
      */
-    public function selectModerateComments(int $postId)
+    public function selectModerateComment(int $postId)
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
@@ -198,11 +198,11 @@ class CommentManager extends Database
      * 
      * @return $comments
      */
-    public function selectReportedComment()
+    public function selectReportedComments()
     {
         $db = $this->dbConnect();
         $getReportReq = $db->prepare(
-            'SELECT id, author, comment, report, 
+            'SELECT id, post_id, author, comment, report, 
             DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') 
             AS comment_date_fr
             FROM comments
@@ -214,5 +214,29 @@ class CommentManager extends Database
         $getReportReq->execute(array());
 
         return $getReportReq;
+    }
+    /**
+     * Get Unreported Comment
+     * 
+     * @param int $postId Post_Id
+     * 
+     * @return $comments
+     */
+    public function selectUnreportedComments()
+    {
+        $db = $this->dbConnect();
+        $getUnreportReq = $db->prepare(
+            'SELECT id, post_id, author, comment, report, 
+            DATE_FORMAT(comment_date, \'%d/%m/%Y à %Hh%i\') 
+            AS comment_date_fr
+            FROM comments
+            WHERE report = FALSE
+            ORDER BY comment_date 
+            DESC'
+        );
+
+        $getUnreportReq->execute(array());
+
+        return $getUnreportReq;
     }
 }

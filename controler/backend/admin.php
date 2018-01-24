@@ -15,8 +15,10 @@ function showAdmin(string $message = null): void
         $adminmanager = new AdminManager();
 
         $posts = $postManager->selectPosts();
-        $reportedComments = $commentManager->selectReportedComment();
+        $reportedComments = $commentManager->selectReportedComments();
+        $comments = $commentManager->selectUnreportedComments();
         $userList = $adminmanager->selectUserList();
+
         include '../views/backend/admin.php';
     } else {
         header('HTTP/1.1 403 Forbidden');
@@ -35,7 +37,8 @@ function showAdminSetPost(int $id): void
         $setPost = $postManager->selectPostComment($id);
 
         $posts = $postManager->selectPosts();
-        $reportedComments = $commentManager->selectReportedComment();
+        $reportedComments = $commentManager->selectReportedComments();
+        $comments = $commentManager->selectUnreportedComments();
         $userList = $adminmanager->selectUserList();
 
         include '../views/backend/admin.php';

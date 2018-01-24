@@ -37,7 +37,7 @@ function getPostComment(int $postId, string $message = null): void
     $commentManager = new CommentManager();
     
     $post = $postManager->selectPostComment($postId);
-    $comments = $commentManager->selectModerateComments($postId);
+    $comments = $commentManager->selectModerateComment($postId);
 
     include '../views/frontend/postView.php';
 }
