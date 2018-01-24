@@ -81,7 +81,7 @@ ob_start(); ?>
                                 </div>
                                 <div class="align-items-end">
                                     <a role="button" href="index.php?action=setpost&amp;id=<?php echo $data['id'];?>" class="btn btn-info">Editer</a>
-                                    <a role="button" href="index.php?action=deletepost&amp;id=<?php echo $data['id']?>" class="btn btn-danger">Effacer</a>
+                                    <a role="button" id="delPost" href="index.php?action=deletepost&amp;id=<?php echo $data['id']?>" class="btn btn-danger">Effacer</a>
                                 </div>
                             </div>
                         </div>
@@ -96,6 +96,28 @@ ob_start(); ?>
             $posts->closeCursor();?>
             </div>
         </div>
+        
+        <!--  Delete Modal -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ...
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+        </div>
+
         <!-- Comment Tab -->
         <div class="tab-pane fade" id="com-tab" role="tabpanel">
             <div class="jumbotron">

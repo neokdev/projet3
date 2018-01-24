@@ -74,15 +74,34 @@ class CommentManager extends Database
      * 
      * @return bool $affectectedLines
      */
-    public function deleteComment(int $postId)
+    public function deleteComment(int $commentId)
     {
         $db = $this->dbConnect();
         $deleteCommentReq = $db->prepare(
-            "DELETE FROM comments
-            WHERE id = '$postId'"
+            'DELETE FROM comments
+            WHERE id = :id'
         );
 
-        $deleteComment = $deleteCommentReq->execute(array($postId));
+        $deleteComment = $deleteCommentReq->execute(array(':id'=>$commentId));
+
+        return $deleteComment;
+    }
+    /**
+     * Delete Comments Associated with deleted posts
+     * 
+     * @param int    $postId  Post Id
+     * 
+     * @return bool $affectectedLines
+     */
+    public function deleteCommentAsso(int $postId)
+    {
+        $db = $this->dbConnect();
+        $deleteCommentAssoReq = $db->prepare(
+            'DELETE FROM comments
+            WHERE post_id = :postId'
+        );
+
+        $deleteComment = $deleteCommentAssoReq->execute(array(':postId'=>$postId));
 
         return $deleteComment;
     }
@@ -97,12 +116,12 @@ class CommentManager extends Database
     {
         $db = $this->dbConnect();
         $comments = $db->prepare(
-            "UPDATE comments
+            'UPDATE comments
             SET report = 1
-            WHERE id = '$commentId'"
+            WHERE id = :commentId'
         );
 
-        $reportedcomment = $comments->execute(array($commentId));
+        $reportedcomment = $comments->execute(array(':commentId'=>$commentId));
 
         return $reportedcomment;
     }

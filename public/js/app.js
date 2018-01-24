@@ -1,8 +1,19 @@
 $(function () {
 
+    
+    //Modals
+    $('#delPost').on('click', function (e) {
+        e.preventDefault();
+        let hashref = this.getAttribute('href');
+        console.log(hashref);
+        $('#deleteModal').modal();
+    });
+    
+
+    //Dismissable alert
     $('div .alert').alert();
 
-
+    // Tab management
     $('.nav-tabs a').on('click', function (e) {
         e.preventDefault();
         $(this).tab('show');
@@ -17,14 +28,14 @@ $(function () {
     }
 
     $('body').on('click', 'a[data-toggle=\'tab\']', function (e) {
-        e.preventDefault()
-        let tab_name = this.getAttribute('href')
+        e.preventDefault();
+        let tab_name = this.getAttribute('href');
         if (history.pushState) {
-            history.pushState(null, null, tab_name)
+            history.pushState(null, null, tab_name);
         } else {
-            location.hash = tab_name
+            location.hash = tab_name;
         }
-        localStorage.setItem('activeTab', tab_name)
+        localStorage.setItem('activeTab', tab_name);
 
         $(this).tab('show');
         return false;

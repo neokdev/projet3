@@ -17,7 +17,7 @@ function addPost(string $title, string $postContent)
             showAdmin($message);
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function setPost(int $id, string $title, string $content)
@@ -37,7 +37,7 @@ function setPost(int $id, string $title, string $content)
             showAdmin($message);
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function delPost(int $id)
@@ -46,10 +46,14 @@ function delPost(int $id)
     
     if ($session->auth) {
         $postManager = new PostManager();
-        $deletedpost = $postManager->deletePost($id);
-
-        if ($deletedpost === false) {
+        $commentManager = new CommentManager();
+        $deletedPost = $postManager->deletePost($id);
+        $deletedCommentAsso = $commentManager->deleteCommentAsso($id);
+        
+        if ($deletedPost === false) {
             throw new Exception('Impossible de supprimer le billet');
+        } elseif ($deletedCommentAsso  === false) {
+            throw new Exception('Impossible de supprimer les commentaires associés');
         } else {
             $message = "<div class=\"alert alert-warning alert-dismissible fade show text-center\" role=\"alert\">Le billet à bien été supprimé<button type=\"button\" class=\"close\" data-dismiss=\"alert\" aria-label=\"Close\">
             <span aria-hidden=\"true\">&times;</span>
@@ -57,6 +61,6 @@ function delPost(int $id)
             showAdmin($message);
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }

@@ -15,7 +15,7 @@ function getReportedComment()
             showAdmin($message);
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function delComment(int $postId)
@@ -37,7 +37,7 @@ function delComment(int $postId)
             showAdmin($message);
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
 function setAllowComment($commentId)
@@ -57,6 +57,6 @@ function setAllowComment($commentId)
             showAdmin($message);
         }
     } else {
-        header('HTTP/1.0 403 Forbidden');
+        header('HTTP/1.1 403 Forbidden');
     }
 }
