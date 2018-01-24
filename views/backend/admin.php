@@ -81,7 +81,7 @@ ob_start(); ?>
                                 </div>
                                 <div class="align-items-end">
                                     <a role="button" href="index.php?action=setpost&amp;id=<?php echo $data['id'];?>" class="btn btn-info">Editer</a>
-                                    <a role="button" id="delPost" href="index.php?action=deletepost&amp;id=<?php echo $data['id']?>" class="btn btn-danger">Effacer</a>
+                                    <a role="button" data-date="<?php echo $data['creation_date_fr']?>" data-toggle="modal" data-target="#deleteModal" data-title="<?php echo $data['title']?>" data-link="index.php?action=deletepost&amp;id=<?php echo $data['id']?>" href="#" class="btn btn-danger">Effacer</a>
                                 </div>
                             </div>
                         </div>
@@ -102,17 +102,18 @@ ob_start(); ?>
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5>
+                <h5 class="modal-title">Supprimer le billet</h5>
                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
                 </button>
             </div>
             <div class="modal-body">
-                ...
+                <div id="modal-title"></div>
+                <div id="modal-date"></div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
+                <a type="button" id="ok" class="btn btn-danger">Supprimer</a>
             </div>
             </div>
         </div>

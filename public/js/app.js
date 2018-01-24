@@ -1,14 +1,20 @@
 $(function () {
 
-    
-    //Modals
-    $('#delPost').on('click', function (e) {
-        e.preventDefault();
-        let hashref = this.getAttribute('href');
-        console.log(hashref);
-        $('#deleteModal').modal();
+    //Modal
+    $('#deleteModal').on('show.bs.modal', function (event) {
+        // Button that triggered the modal
+        let button = $(event.relatedTarget); 
+        // Extract info from data-* attributes
+        let title = button.data('title');
+        let link = button.data('link');
+        let date = button.data('date');
+        // If necessary, you could initiate an AJAX request here (and then do the updating in a callback).
+        // Update the modal's content. We'll use jQuery here, but you could use a data binding library or other methods instead.
+        let modal = $(this);
+        modal.find('#modal-title').text("Voulez-vous vraiment supprimer ce billet de façon permanente ?" + title);
+        modal.find('#modal-date').text("Créé le : " + date);
+        modal.find('#ok').attr('href', link);
     });
-    
 
     //Dismissable alert
     $('div .alert').alert();
@@ -45,4 +51,4 @@ $(function () {
             $('a[data-toggle=\'tab\']').first().attr('href');
         $('a[href=\'' + anchor + '\']').tab('show');
     });
-});
+})
