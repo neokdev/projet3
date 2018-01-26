@@ -22,21 +22,13 @@ $(function () {
             modal.find('#modal-body').text("Voulez-vous vraiment supprimer cet administrateur de façon permanente ?");
         } 
         
-        if (type === "billet") {
-            modal.find('#modal-title').text("\"" + title + "\"");
-        } if (type === "comment") {
-            modal.find('#modal-title').text("Dans le billet : \"" + title + "\"");
-        } if (type === "user") {
-            modal.find('#modal-title').text("Avec l'adresse email : \"" + title + "\"");
-        }
+        if (type === "billet") modal.find('#modal-title').text("\"" + title + "\"");
+        if (type === "comment") modal.find('#modal-title').text("Dans le billet : \"" + title + "\"");
+        if (type === "user") modal.find('#modal-title').text("Avec l'adresse email : \"" + title + "\"");
 
-        if (date !== undefined) {
-           modal.find('#modal-date').text("Créé le : " + date); 
-        }
+        if (date !== undefined) modal.find('#modal-date').text("Créé le : " + date);
 
-        if (author !== undefined) {
-            modal.find('#modal-author').text("Commentaire de " + author); 
-         }
+        if (author !== undefined) modal.find('#modal-author').text("Commentaire de " + author);
         
         modal.find('#ok').attr('href', link);
     });
