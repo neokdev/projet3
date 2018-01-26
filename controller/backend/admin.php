@@ -2,7 +2,7 @@
 
 require_once '../model/frontend/PostManager.php';
 require_once '../model/frontend/CommentManager.php';
-require_once '../controler/backend/Session.php';
+require_once '../controller/backend/Session.php';
 
 function showAdmin(string $message = null): void
 {

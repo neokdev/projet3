@@ -1,7 +1,7 @@
 <?php
 
 require_once '../model/backend/AdminManager.php';
-require_once '../controler/backend/Session.php';
+require_once '../controller/backend/Session.php';
 
 function showLogin(string $message = null): void
 {

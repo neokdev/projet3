@@ -1,5 +1,5 @@
 <?php
-require_once '../controler/backend/Session.php';
+require_once '../controller/backend/Session.php';
 $session = Session::getInstance();
 if ($session->auth) {
     ob_start(); ?>

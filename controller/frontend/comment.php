@@ -1,9 +1,9 @@
 <?php
 /**
- * Frontend Comment Controler file
+ * Frontend Comment controller file
  * PHP version 7.1.9
  * 
- * @category Controler
+ * @category controller
  * @package  Projet3
  * @author   Neok <neokdev@gmail.com>
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01

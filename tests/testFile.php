@@ -1,5 +1,5 @@
 <?php
-namespace Neok\Projet3\Controler;
+namespace Neok\Projet3\controller;
 
 use PHPUnit\Framework\TestCase;
 use Neok\Projet3\Model\AdminManager;

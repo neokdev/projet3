@@ -9,12 +9,12 @@
  * @license  http://www.php.net/license/3_01.txt PHP License 3.01
  * @see      http://www.projet3.nekbot.com/
  */
-require 'controler/frontend/post.php';
-require 'controler/frontend/comment.php';
-require 'controler/backend/admin.php';
-require 'controler/backend/adminpost.php';
-require 'controler/backend/admincomment.php';
-require 'controler/backend/login.php';
+require 'controller/frontend/post.php';
+require 'controller/frontend/comment.php';
+require 'controller/backend/admin.php';
+require 'controller/backend/adminpost.php';
+require 'controller/backend/admincomment.php';
+require 'controller/backend/login.php';
 
 try {
     if (isset($_GET['action'])) {
@@ -51,7 +51,7 @@ try {
                 throw new Exception('L\'id de billet est invalide.');
             }
         } elseif ($_GET['action'] == 'logout') {
-            include 'controler/backend/logout.php';
+            include 'controller/backend/logout.php';
             logout();
         } elseif ($_GET['action'] == 'deletepost') {
             if (isset($_GET['id']) && $_GET['id'] > 0) {
