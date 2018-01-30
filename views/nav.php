@@ -7,13 +7,13 @@ if ($session->auth) {
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a type="button" class="nav-link btn btn-dark" href="index.php?action=logout"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
+                    <a role="button" class="nav-link btn btn-dark" href="index.php?action=logout"><i class="fas fa-sign-out-alt"></i> Se déconnecter</a>
                 </li>
                 <li class="nav-item">
-                    <a type="button" class="nav-link btn btn-primary" href="index.php?p=home"><i class="fas fa-home"></i> Accueil</a>
+                    <a role="button" class="nav-link btn btn-primary" href="index.php?p=home"><i class="fas fa-home"></i> Accueil</a>
                 </li>
                 <li class="nav-item">
-                    <a type="button" class="nav-link btn btn-secondary" href="index.php?p=admin"><i class="fas fa-unlock-alt"></i> Acceder à l'interface d'administration</a>
+                    <a role="button" class="nav-link btn btn-secondary" href="index.php?p=admin"><i class="fas fa-unlock-alt"></i> Acceder à l'interface d'administration</a>
                 </li>
             </ul>
         </div>
@@ -25,10 +25,10 @@ if ($session->auth) {
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav">
                     <li class="nav-item">
-                        <a type="button" class="nav-link btn btn-secondary" href="index.php?p=login"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
+                        <a role="button" class="nav-link btn btn-secondary" href="index.php?p=login"><i class="fas fa-sign-in-alt"></i> Se connecter</a>
                     </li>
                     <li class="nav-item">
-                    <a type="button" class="nav-link btn btn-primary" href="index.php?p=home"><i class="fas fa-home"></i> Accueil</a>
+                    <a role="button" class="nav-link btn btn-primary" href="index.php?p=home"><i class="fas fa-home"></i> Accueil</a>
                     </li>
                 </ul>
             </div>

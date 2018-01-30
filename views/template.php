@@ -15,9 +15,11 @@
          * @see      http://www.projet3.nekbot.com/
          */
         echo $title ?></title>
-        <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+        <script src="https://cloud.tinymce.com/stable/tinymce.min.js?apiKey=endqmbue15j12xgih2qzex7i6ho4fgun9nloyc01k7g5xkqg"></script>
         <script> tinymce.init({
             selector: '#mce',
+            plugins: "a11ychecker, advcode, linkchecker, media mediaembed, powerpaste, tinymcespellchecker",
+   toolbar: "a11ycheck, code",
             height : 600,
             content_css : 'https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.3/css/bootstrap.min.css',
             language_url: "public/js/tinymce/langs/fr_FR.js"
