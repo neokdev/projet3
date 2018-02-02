@@ -25,14 +25,14 @@ function login(string $email, string $password)
             $session->id = $userid;
             $session->email = $email;
             $session->date = $date;
-            $message = "<div class=\"alert alert-info text-center\" role=\"success\">Connecté depuis l'adresse : $session->email</div>";
+            $message = "<div class=\"alert alert-info alert-dismissible text-center\" role=\"success\">Connecté depuis l'adresse : $session->email</div>";
             getPosts($message);
         } else {
-            $message = "<div class=\"alert alert-danger text-center\" role=\"success\"><strong>Erreur !</strong> Le mot de passe est incorrect</div>";
+            $message = "<div class=\"alert alert-danger alert-dismissible text-center\" role=\"success\"><strong>Erreur !</strong> Le mot de passe est incorrect</div>";
             showLogin($message);
         }
     } else {
-        $message = "<div class=\"alert alert-danger text-center\" role=\"success\"><strong>Erreur !</strong> Cet email n'est pas dans la base de données</div>";
+        $message = "<div class=\"alert alert-danger alert-dismissible text-center\" role=\"success\"><strong>Erreur !</strong> Cet email n'est pas dans la base de données</div>";
         showLogin($message);
     }
 }

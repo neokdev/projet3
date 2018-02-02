@@ -195,7 +195,7 @@ ob_start(); ?>
                 <br/>
                 <form action="index.php?p=admin" method="post">
                     <div class="form-group">
-                        <label for="mail">Veuillez entrer votre nouvelle adresse email</label>
+                        <label for="mailmail">Veuillez entrer votre nouvelle adresse email</label>
                         <input type="email" class="form-control" name="mailmail" required="true" />
                     </div>
                     <div class="form-group">
@@ -203,7 +203,7 @@ ob_start(); ?>
                         <input type="email" class="form-control" name="mailconfirm" required="true" />
                     </div>
                     <div class="form-group">
-                        <label for="pass">Veuillez entrer votre mot de passe</label>
+                        <label for="mailpass">Veuillez entrer votre mot de passe</label>
                         <input type="password" class="form-control" name="mailpass" required="true" />
                     </div>
                     <div class="form-group">
@@ -217,7 +217,7 @@ ob_start(); ?>
                 <br/>
                 <form action="index.php?p=admin" method="post">
                     <div class="form-group">
-                        <label for="pass">Veuillez entrer votre nouveau mot de passe</label>
+                        <label for="passpass">Veuillez entrer votre nouveau mot de passe</label>
                         <input type="password" class="form-control" name="passpass" required="true" />
                     </div>
                     <div class="form-group">
@@ -235,15 +235,15 @@ ob_start(); ?>
                 <br/>
                 <form action="index.php?p=admin" method="post">
                     <div class="form-group">
-                        <label for="pass">Adresse email</label>
+                        <label for="adminmail">Adresse email</label>
                         <input type="email" class="form-control" name="adminmail" required="true" />
                     </div>
                     <div class="form-group">
-                        <label for="pass">Mot de passe</label>
+                        <label for="adminpass">Mot de passe</label>
                         <input type="password" class="form-control" name="adminpass" required="true" />
                     </div>
                     <div class="form-group">
-                        <label for="pass">Veuillez confirmer votre mot de passe</label>
+                        <label for="adminconfirm">Veuillez confirmer votre mot de passe</label>
                         <input type="password" class="form-control" name="adminconfirm" required="true" />
                     </div>
                     <div class="form-group">

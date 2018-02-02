@@ -102,7 +102,7 @@ id=<?php echo $post['id'] ?>" method="post">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuler</button>
-                        <a type="button" id="ok" class="btn btn-danger"><i class="fas fa-trash-alt"></i> Supprimer</a>
+                        <a type="button" id="ok" class="btn btn-danger"><i class="far fa-flag"></i> Signaler</a>
                     </div>
                 </div>
             </div>
